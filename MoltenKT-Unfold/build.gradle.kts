@@ -9,15 +9,16 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven("https://jitpack.io")
 }
 
-var host = "github.com/TheFruxz/MoltenKT"
+var host = "github.com/TheFruxz/Stacked"
 
 dependencies {
 
     @Suppress("DependencyOnStdlib") implementation(kotlin("stdlib"))
 
-    implementation(project(":MoltenKT-Core"))
+    implementation("com.github.TheFruxz:Ascend:1.0.0-RC")
 
     implementation("net.kyori:adventure-api:4.11.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.11.0")

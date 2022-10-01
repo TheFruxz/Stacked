@@ -1,4 +1,2 @@
-rootProject.name = "MoltenKT"
-include("MoltenKT-Core")
-include("MoltenKT-Paper")
+rootProject.name = "Stacked"
 include("MoltenKT-Unfold")
