@@ -1,6 +1,6 @@
-package de.moltenKt.unfold.extension
+package de.fruxz.stacked.extension
 
-import de.moltenKt.unfold.Unfold
+import de.fruxz.stacked.Unfold
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.format.Style

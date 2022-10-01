@@ -1,7 +1,7 @@
-package de.moltenKt.unfold.extension
+package de.fruxz.stacked.extension
 
 import net.kyori.adventure.key.Key
-import de.moltenKt.unfold.extension.KeyingStrategy.*
+import de.fruxz.stacked.extension.KeyingStrategy.*
 
 fun Key.subKey(value: String, strategy: KeyingStrategy = PATHING): Key = Key.key(
 	when (strategy) {

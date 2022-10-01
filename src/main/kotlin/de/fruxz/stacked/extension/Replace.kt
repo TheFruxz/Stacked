@@ -1,4 +1,4 @@
-package de.moltenKt.unfold.extension
+package de.fruxz.stacked.extension
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike

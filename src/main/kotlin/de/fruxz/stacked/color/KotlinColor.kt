@@ -1,4 +1,4 @@
-package de.moltenKt.unfold.color
+package de.fruxz.stacked.color
 
 import de.fruxz.ascend.extension.math.ceilToInt
 import de.fruxz.ascend.extension.math.floorToInt
@@ -16,11 +16,11 @@ import kotlin.math.roundToInt
 import java.awt.Color as AwtColor
 
 @Serializable
-data class MoltenColor(
+data class KotlinColor(
     @SerialName("r") override val red: Int,
     @SerialName("g") override val green: Int,
     @SerialName("b") override val blue: Int,
-) : RGBLike, TextColor, ColorBase<MoltenColor> {
+) : RGBLike, TextColor, ColorBase<KotlinColor> {
 
     constructor(textColor: TextColor) : this(textColor.value())
 
@@ -46,7 +46,7 @@ data class MoltenColor(
      * @author Fruxz
      * @since 1.0
      */
-    override fun shiftTo(color: ColorBase<*>, opacity: Double, shiftType: ShiftType): MoltenColor {
+    override fun shiftTo(color: ColorBase<*>, opacity: Double, shiftType: ShiftType): KotlinColor {
         validate()
         if (opacity !in 0.0..1.0) error("opacity ($opacity) must be in range 0.0..1.0")
 
@@ -74,7 +74,7 @@ data class MoltenColor(
      * @author Fruxz
      * @since 1.0
      */
-    override fun shiftTo(red: Int, green: Int, blue: Int, opacity: Double, shiftType: ShiftType): MoltenColor =
+    override fun shiftTo(red: Int, green: Int, blue: Int, opacity: Double, shiftType: ShiftType): KotlinColor =
         shiftTo(Color.of(red, green, blue), opacity, shiftType)
 
     /**
@@ -86,7 +86,7 @@ data class MoltenColor(
      * @author Fruxz
      * @since 1.0
      */
-    override fun splitShiftTo(destination: ColorBase<*>, parts: Int): List<MoltenColor> = buildList {
+    override fun splitShiftTo(destination: ColorBase<*>, parts: Int): List<KotlinColor> = buildList {
         val step = 1.0 / parts
         var opacity = 0.0
         repeat(parts + 1) {
@@ -101,7 +101,7 @@ data class MoltenColor(
      * @author Fruxz
      * @since 1.0
      */
-    override fun brighter(strength: Double, shiftType: ShiftType): MoltenColor =
+    override fun brighter(strength: Double, shiftType: ShiftType): KotlinColor =
         shiftTo(Color.of(AwtColor.WHITE), strength, shiftType)
 
     /**
@@ -110,7 +110,7 @@ data class MoltenColor(
      * @author Fruxz
      * @since 1.0
      */
-    override fun darker(strength: Double, shiftType: ShiftType): MoltenColor =
+    override fun darker(strength: Double, shiftType: ShiftType): KotlinColor =
         shiftTo(Color.of(AwtColor.BLACK), strength, shiftType)
 
     override val rgb: Int by lazy {
@@ -139,7 +139,7 @@ data class MoltenColor(
      * @author Fruxz
      * @since 1.0
      */
-    fun shiftTo(color: MoltenColor, opacity: Double, shiftType: ShiftType = RELATIVE_TO_TRANSITION): MoltenColor {
+    fun shiftTo(color: KotlinColor, opacity: Double, shiftType: ShiftType = RELATIVE_TO_TRANSITION): KotlinColor {
         validate()
         if (opacity !in 0.0..1.0) error("opacity ($opacity) must be in range 0.0..1.0")
 
@@ -153,7 +153,7 @@ data class MoltenColor(
     }
 
     override fun recreate(red: Int, green: Int, blue: Int) =
-        MoltenColor(red, green, blue)
+        KotlinColor(red, green, blue)
 
     override fun red(): Int = red
 

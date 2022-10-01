@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="MoltenKT-PRODUCTION" type="GradleRunConfiguration" factoryName="Gradle">
+  <configuration default="false" name="Stacked-PRODUCTION" type="GradleRunConfiguration" factoryName="Gradle">
     <ExternalSystemSettings>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -13,9 +13,7 @@
           <option value="build" />
           <option value="javadoc" />
           <option value="javadocJar" />
-          <option value="shadowJar" />
           <option value="publishToMavenLocal" />
-          <option value="dokkaHtmlMultiModule" />
         </list>
       </option>
       <option name="vmOptions" />

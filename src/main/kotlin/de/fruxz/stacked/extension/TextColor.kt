@@ -1,16 +1,16 @@
-package de.moltenKt.unfold.extension
+package de.fruxz.stacked.extension
 
-import de.moltenKt.unfold.Unfold
+import de.fruxz.stacked.Unfold
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor
-import de.fruxz.ascend.tool.color.Color as MoltenCoreColor
+import de.fruxz.ascend.tool.color.Color as AscendColor
 
 @Unfold
 infix fun <T : StyleSetter<T>> T.dye(color: TextColor) = color(color)
 
 @Unfold
-infix fun <T : StyleSetter<T>> T.dye(color: MoltenCoreColor) = this dye color.asMoltenColor()
+infix fun <T : StyleSetter<T>> T.dye(color: AscendColor) = this dye color.asKotlinColor()
 
 fun <T : StyleSetter<T>> T.dyeBlack() = this dye NamedTextColor.BLACK
 

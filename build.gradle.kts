@@ -10,8 +10,8 @@ plugins {
 
 var host = "github.com/TheFruxz/Stacked"
 
-version = "1.0-PRE-17"
-group = "de.moltenKt"
+version = "1.0.0-RC"
+group = "de.fruxz"
 
 repositories {
     mavenCentral()

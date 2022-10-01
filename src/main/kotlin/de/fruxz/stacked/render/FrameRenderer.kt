@@ -1,7 +1,7 @@
-package de.moltenKt.unfold.render
+package de.fruxz.stacked.render
 
 import de.fruxz.ascend.tool.color.ColorBase
-import de.moltenKt.unfold.extension.asStyledComponent
+import de.fruxz.stacked.extension.asStyledComponent
 import net.kyori.adventure.text.TextComponent
 
 object FrameRenderer {
