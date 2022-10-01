@@ -4,7 +4,7 @@ import de.moltenKt.unfold.Unfold
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor
-import de.moltenKt.core.tool.color.Color as MoltenCoreColor
+import de.fruxz.ascend.tool.color.Color as MoltenCoreColor
 
 @Unfold
 infix fun <T : StyleSetter<T>> T.dye(color: TextColor) = color(color)

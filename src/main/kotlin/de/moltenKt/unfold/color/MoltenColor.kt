@@ -1,13 +1,13 @@
 package de.moltenKt.unfold.color
 
-import de.moltenKt.core.extension.math.ceilToInt
-import de.moltenKt.core.extension.math.floorToInt
-import de.moltenKt.core.extension.math.limitTo
-import de.moltenKt.core.tool.color.Color
-import de.moltenKt.core.tool.color.Color.ShiftType
-import de.moltenKt.core.tool.color.Color.ShiftType.RELATIVE_TO_SPECTRUM
-import de.moltenKt.core.tool.color.Color.ShiftType.RELATIVE_TO_TRANSITION
-import de.moltenKt.core.tool.color.ColorBase
+import de.fruxz.ascend.extension.math.ceilToInt
+import de.fruxz.ascend.extension.math.floorToInt
+import de.fruxz.ascend.extension.math.limitTo
+import de.fruxz.ascend.tool.color.Color
+import de.fruxz.ascend.tool.color.Color.ShiftType
+import de.fruxz.ascend.tool.color.Color.ShiftType.RELATIVE_TO_SPECTRUM
+import de.fruxz.ascend.tool.color.Color.ShiftType.RELATIVE_TO_TRANSITION
+import de.fruxz.ascend.tool.color.ColorBase
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import net.kyori.adventure.text.format.TextColor

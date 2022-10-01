@@ -28,7 +28,8 @@ import net.kyori.adventure.text.format.TextColor
  * @author Fruxz
  * @since 1.0
  */
-@Unfold fun buildComponent(base: TextComponent = Component.empty(), builder: Builder.() -> Unit): TextComponent =
+@Unfold
+fun buildComponent(base: TextComponent = Component.empty(), builder: Builder.() -> Unit): TextComponent =
 	base.toBuilder().apply(builder).build()
 
 /* TODO reintroduce if context api gets available
@@ -60,7 +61,8 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold infix operator fun Builder.plus(styledString: String): Builder =
+@Unfold
+infix operator fun Builder.plus(styledString: String): Builder =
 	append(styledString.asStyledComponent)
 
 /**
@@ -72,7 +74,8 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold infix operator fun Builder.plus(component: ComponentLike): Builder =
+@Unfold
+infix operator fun Builder.plus(component: ComponentLike): Builder =
 	append(component)
 
 /**
@@ -84,7 +87,8 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold infix operator fun Builder.plus(components: Iterable<ComponentLike>): Builder =
+@Unfold
+infix operator fun Builder.plus(components: Iterable<ComponentLike>): Builder =
 	append(components)
 
 /**
@@ -97,7 +101,8 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold infix operator fun <I : Component> I.plus(component: Component): Component =
+@Unfold
+infix operator fun <I : Component> I.plus(component: Component): Component =
 	append(component)
 
 /**
@@ -109,7 +114,8 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold infix operator fun Builder.plus(clickEvent: ClickEvent?): Builder =
+@Unfold
+infix operator fun Builder.plus(clickEvent: ClickEvent?): Builder =
 	clickEvent(clickEvent)
 
 /**
@@ -121,7 +127,8 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold infix operator fun Builder.plus(color: TextColor?): Builder =
+@Unfold
+infix operator fun Builder.plus(color: TextColor?): Builder =
 	color(color)
 
 /**
@@ -133,7 +140,8 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold infix operator fun Builder.plus(style: Style): Builder =
+@Unfold
+infix operator fun Builder.plus(style: Style): Builder =
 	style(style)
 
 /**

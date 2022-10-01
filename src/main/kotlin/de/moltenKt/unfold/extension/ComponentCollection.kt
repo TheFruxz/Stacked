@@ -1,8 +1,7 @@
 package de.moltenKt.unfold.extension
 
-import de.moltenKt.core.extension.container.splitBy
+import de.fruxz.ascend.extension.container.splitBy
 import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.ComponentIteratorType
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
 

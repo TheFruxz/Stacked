@@ -3,7 +3,7 @@ package de.moltenKt.unfold.extension
 import de.moltenKt.unfold.color.MoltenColor
 import net.kyori.adventure.text.format.TextColor
 import java.awt.Color
-import de.moltenKt.core.tool.color.Color as CoreColor
+import de.fruxz.ascend.tool.color.Color as CoreColor
 
 fun colorOf(red: Int, green: Int, blue: Int) = MoltenColor(red, green, blue)
 

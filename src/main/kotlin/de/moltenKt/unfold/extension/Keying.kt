@@ -1,16 +1,17 @@
 package de.moltenKt.unfold.extension
 
 import net.kyori.adventure.key.Key
+import de.moltenKt.unfold.extension.KeyingStrategy.*
 
-fun Key.subKey(value: String, strategy: KeyingStrategy = KeyingStrategy.PATHING): Key = Key.key(
+fun Key.subKey(value: String, strategy: KeyingStrategy = PATHING): Key = Key.key(
 	when (strategy) {
-		KeyingStrategy.SQUASH -> asString().replace(":", "_")
-		KeyingStrategy.ORIGIN -> namespace()
-		KeyingStrategy.CONTINUE -> value()
-		KeyingStrategy.PATHING -> namespace()
+		SQUASH -> asString().replace(":", "_")
+		ORIGIN -> namespace()
+		CONTINUE -> value()
+		PATHING -> namespace()
 	},
 	when (strategy) {
-		KeyingStrategy.PATHING -> "${value()}.$value"
+		PATHING -> "${value()}.$value"
 		else -> value.filter { KEY_REGEX.matches("$it") }
 	}
 )

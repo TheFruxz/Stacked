@@ -1,6 +1,6 @@
 package de.moltenKt.unfold.render
 
-import de.moltenKt.core.tool.color.ColorBase
+import de.fruxz.ascend.tool.color.ColorBase
 import de.moltenKt.unfold.extension.asStyledComponent
 import net.kyori.adventure.text.TextComponent
 
