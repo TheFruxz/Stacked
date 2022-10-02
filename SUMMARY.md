@@ -1,0 +1,15 @@
+# Table of contents
+
+* [Welcome to Stacked!](README.md)
+* [🔑 Keying](keying/README.md)
+  * [🛤 subKey(...)](keying/subkey-....md)
+  * [🔐 Regex](keying/regex.md)
+* [💬 Components](components/README.md)
+  * [♻ Convert Components](components/convert-components.md)
+  * [🧑🔧 Create Components](components/create-components/README.md)
+    * [📏 buildComponent { ... }](components/create-components/buildcomponent-....md)
+    * [📐 text { ... }](components/create-components/text-....md)
+    * [⚒ Builder extensions](components/create-components/builder-extensions.md)
+  * [🪚 Edit Components](components/edit-components.md)
+  * [🥽 Use Components](components/use-components.md)
+* [📋 Titles](titles.md)
