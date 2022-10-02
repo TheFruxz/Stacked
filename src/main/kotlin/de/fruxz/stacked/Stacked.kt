@@ -60,7 +60,7 @@ context(Builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 infix operator fun Builder.plus(styledString: String): Builder =
 	append(styledString.asStyledComponent)
 
@@ -73,7 +73,7 @@ infix operator fun Builder.plus(styledString: String): Builder =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 infix operator fun Builder.plus(component: ComponentLike): Builder =
 	append(component)
 
@@ -86,7 +86,7 @@ infix operator fun Builder.plus(component: ComponentLike): Builder =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 infix operator fun Builder.plus(components: Iterable<ComponentLike>): Builder =
 	append(components)
 
@@ -100,7 +100,7 @@ infix operator fun Builder.plus(components: Iterable<ComponentLike>): Builder =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 infix operator fun <I : Component> I.plus(component: Component): Component =
 	append(component)
 
@@ -113,7 +113,7 @@ infix operator fun <I : Component> I.plus(component: Component): Component =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 infix operator fun Builder.plus(clickEvent: ClickEvent?): Builder =
 	clickEvent(clickEvent)
 
@@ -126,7 +126,7 @@ infix operator fun Builder.plus(clickEvent: ClickEvent?): Builder =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 infix operator fun Builder.plus(color: TextColor?): Builder =
 	color(color)
 
@@ -139,7 +139,7 @@ infix operator fun Builder.plus(color: TextColor?): Builder =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 infix operator fun Builder.plus(style: Style): Builder =
 	style(style)
 
@@ -154,7 +154,7 @@ infix operator fun Builder.plus(style: Style): Builder =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 fun text(content: String, builder: Builder.() -> Unit = { }) = content.asStyledComponent(builder)
 
 /**
@@ -166,7 +166,7 @@ fun text(content: String, builder: Builder.() -> Unit = { }) = content.asStyledC
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 fun text(component: ComponentLike, builder: Builder.() -> Unit = { }) =
 	Component.text().append(component).apply(builder).build()
 
@@ -179,7 +179,7 @@ fun text(component: ComponentLike, builder: Builder.() -> Unit = { }) =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
 	componentBuilder.apply(builder).build()
 
@@ -192,7 +192,7 @@ fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 fun text(builder: Builder.() -> Unit) = text(Component.empty(), builder)
 
 /**
@@ -203,9 +203,9 @@ fun text(builder: Builder.() -> Unit) = text(Component.empty(), builder)
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
+@Stacked
 fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hoverEvent(process())
 
 @DslMarker
 @PublishedApi
-internal annotation class Unfold
+internal annotation class Stacked

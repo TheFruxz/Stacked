@@ -1,15 +1,15 @@
 package de.fruxz.stacked.extension
 
-import de.fruxz.stacked.Unfold
+import de.fruxz.stacked.Stacked
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor
 import de.fruxz.ascend.tool.color.Color as AscendColor
 
-@Unfold
+@Stacked
 infix fun <T : StyleSetter<T>> T.dye(color: TextColor) = color(color)
 
-@Unfold
+@Stacked
 infix fun <T : StyleSetter<T>> T.dye(color: AscendColor) = this dye color.asKotlinColor()
 
 fun <T : StyleSetter<T>> T.dyeBlack() = this dye NamedTextColor.BLACK

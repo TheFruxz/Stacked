@@ -1,14 +1,14 @@
 package de.fruxz.stacked.extension
 
-import de.fruxz.stacked.Unfold
+import de.fruxz.stacked.Stacked
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 
-@Unfold
+@Stacked
 fun TextComponent.Builder.newlines(amount: Int) = apply { repeat(amount) { append(Component.newline()) } }
 
-@Unfold
+@Stacked
 fun TextComponent.Builder.space() = append(Component.space())
 
-@Unfold
+@Stacked
 fun TextComponent.Builder.spaces(amount: Int) = apply { repeat(amount) { space() } }
