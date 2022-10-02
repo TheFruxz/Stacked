@@ -28,7 +28,6 @@ import net.kyori.adventure.text.format.TextColor
  * @author Fruxz
  * @since 1.0
  */
-@Unfold
 fun buildComponent(base: TextComponent = Component.empty(), builder: Builder.() -> Unit): TextComponent =
 	base.toBuilder().apply(builder).build()
 
