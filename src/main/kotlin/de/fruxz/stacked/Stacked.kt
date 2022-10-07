@@ -144,6 +144,17 @@ infix operator fun Builder.plus(style: Style): Builder =
 	style(style)
 
 /**
+ * This function applies the result of the [process] to [this],
+ * using the [StyleSetter.hoverEvent] function.
+ * @param process The process, which generates the [HoverEventSource]<*>
+ * @return The modified [this]
+ * @author Fruxz
+ * @since 1.0
+ */
+@Stacked
+fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hoverEvent(process())
+
+/**
  * This function converts the [content] to an [TextComponent] using the [String.asStyledComponent].
  * MiniMessage is used to give the ability to apply colors, styles and more using only text.
  * Then, the [builder] process is applied, to modify the components state, which is performed
@@ -194,17 +205,6 @@ fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
  */
 @Stacked
 fun text(builder: Builder.() -> Unit) = text(Component.empty(), builder)
-
-/**
- * This function applies the result of the [process] to [this],
- * using the [StyleSetter.hoverEvent] function.
- * @param process The process, which generates the [HoverEventSource]<*>
- * @return The modified [this]
- * @author Fruxz
- * @since 1.0
- */
-@Stacked
-fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hoverEvent(process())
 
 @DslMarker
 @PublishedApi
