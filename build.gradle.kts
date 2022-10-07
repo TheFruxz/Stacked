@@ -22,7 +22,7 @@ dependencies {
 
     @Suppress("DependencyOnStdlib") implementation(kotlin("stdlib"))
 
-    implementation("com.github.TheFruxz:Ascend:1.0.0-RC")
+    implementation("com.github.TheFruxz:Ascend:1.0.0-RC2")
 
     implementation("net.kyori:adventure-api:4.11.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.11.0")
