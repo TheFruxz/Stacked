@@ -2,12 +2,12 @@ package de.fruxz.stacked.extension
 
 import net.kyori.adventure.text.ComponentLike
 
-fun ComponentLike.content() = asPlainString
+val ComponentLike.content get() = asPlainString
 
-fun ComponentLike.isBlank() = content().isBlank()
+val ComponentLike.isBlank get() = content.isBlank()
 
-fun ComponentLike.isNotBlank() = content().isNotBlank()
+val ComponentLike.isNotBlank get() = content.isNotBlank()
 
-fun ComponentLike.isEmpty() = content().isEmpty()
+val ComponentLike.isEmpty get() = content.isEmpty()
 
-fun ComponentLike.isNotEmpty() = content().isNotEmpty()
+val ComponentLike.isNotEmpty get() =  content.isNotEmpty()

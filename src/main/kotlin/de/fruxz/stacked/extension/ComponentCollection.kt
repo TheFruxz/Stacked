@@ -42,7 +42,7 @@ fun <T : ComponentLike> Iterable<T>.joinToComponent(spliterator: ComponentLike, 
 }
 
 /**
- * This function splits every line of the component to its
+ * This computational value splits every line of the component to its
  * own component.
  * This is useful if you need the specific lines of the component,
  * like adding a prefix to each line.
@@ -50,7 +50,7 @@ fun <T : ComponentLike> Iterable<T>.joinToComponent(spliterator: ComponentLike, 
  * @author Fruxz
  * @since 1.0
  */
-fun <T : ComponentLike> T.lines(): List<Component> =
-    (asComponent().children().takeIf { it.isNotEmpty() } ?: listOf(asComponent()))
+val <T : ComponentLike> T.lines: List<Component>
+    get() = (asComponent().children().takeIf { it.isNotEmpty() } ?: listOf(asComponent()))
         .splitBy { it == Component.newline() }
         .map { it.joinToComponent() }

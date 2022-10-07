@@ -5,12 +5,16 @@ import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor
 import de.fruxz.ascend.tool.color.Color as AscendColor
+import java.awt.Color as AwtColor
 
 @Stacked
 infix fun <T : StyleSetter<T>> T.dye(color: TextColor) = color(color)
 
 @Stacked
 infix fun <T : StyleSetter<T>> T.dye(color: AscendColor) = this dye color.asKotlinColor()
+
+@Stacked
+infix fun <T : StyleSetter<T>> T.dye(color: AwtColor) = this dye TextColor.color(color.rgb)
 
 fun <T : StyleSetter<T>> T.dyeBlack() = this dye NamedTextColor.BLACK
 
