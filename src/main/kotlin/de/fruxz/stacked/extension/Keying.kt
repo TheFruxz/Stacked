@@ -2,8 +2,9 @@ package de.fruxz.stacked.extension
 
 import net.kyori.adventure.key.Key
 import de.fruxz.stacked.extension.KeyingStrategy.*
+import java.util.*
 
-fun Key.subKey(value: String, strategy: KeyingStrategy = PATHING): Key = Key.key(
+fun Key.subKey(value: String, strategy: KeyingStrategy = CONTINUE): Key = Key.key(
 	when (strategy) {
 		SQUASH -> asString().replace(":", "_")
 		ORIGIN -> namespace()
@@ -11,8 +12,8 @@ fun Key.subKey(value: String, strategy: KeyingStrategy = PATHING): Key = Key.key
 		PATHING -> namespace()
 	},
 	when (strategy) {
-		PATHING -> "${value()}.$value"
-		else -> value.filter { KEY_REGEX.matches("$it") }
+		PATHING -> "${value()}.${value.lowercase(Locale.ENGLISH).replace(" ", "_")}"
+		else -> value.lowercase(Locale.ENGLISH).replace(" ", "_")
 	}
 )
 
