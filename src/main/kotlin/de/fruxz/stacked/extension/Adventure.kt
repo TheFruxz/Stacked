@@ -63,7 +63,7 @@ val String.asComponent: TextComponent
 	get() = adventureSerializer.deserializeOr(this, Component.text("FAILED", NamedTextColor.RED))!!
 
 fun String.asComponent(builder: Builder.() -> Unit) =
-	asComponent.toBuilder().apply(builder).build()
+	Component.text().append(asComponent).apply(builder).build()
 
 /**
  * This computational value converts this [String] into a [TextComponent]
@@ -115,7 +115,7 @@ val String.asStyledComponent: TextComponent
 	get() = Component.text().append(miniMessageSerializer.deserializeOr(this, Component.empty())!!).build()
 
 fun String.asStyledComponent(builder: Builder.() -> Unit) =
-	asStyledComponent.toBuilder().apply(builder).build()
+	Component.text().append(asStyledComponent).apply(builder).build()
 
 /**
  * This computational value converts this [String] into a [TextComponent]
