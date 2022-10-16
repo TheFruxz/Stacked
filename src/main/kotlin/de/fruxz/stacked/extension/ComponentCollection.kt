@@ -53,4 +53,6 @@ fun <T : ComponentLike> Iterable<T>.joinToComponent(spliterator: ComponentLike, 
 val <T : ComponentLike> T.lines: List<Component>
     get() = (asComponent().children().takeIf { it.isNotEmpty() } ?: listOf(asComponent()))
         .splitBy { it == Component.newline() }
-        .map { it.joinToComponent() }
+        .map {
+            it.joinToComponent().colorIfAbsent(this.asComponent().color())
+        }
