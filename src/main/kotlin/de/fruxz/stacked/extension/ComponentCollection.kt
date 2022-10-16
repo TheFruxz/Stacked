@@ -5,6 +5,7 @@ import de.fruxz.stacked.buildComponent
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
+import net.kyori.adventure.text.format.Style
 
 /**
  * This function creates a [TextComponent] containing
@@ -55,10 +56,6 @@ val <T : ComponentLike> T.lines: List<Component>
         (original.children().takeIf { it.isNotEmpty() } ?: listOf(original))
             .splitBy { it == Component.newline() }
             .map {
-                it.joinToComponent().colorIfAbsent(original.color()).apply {
-                    if (hoverEvent() == null) hoverEvent(original.hoverEvent())
-                    if (clickEvent() == null) clickEvent(original.clickEvent())
-                    this.applyFallbackStyle(original.style())
-                }
+                it.joinToComponent().colorIfAbsent(original.color()).mergeStyle(original)
             }
     }
