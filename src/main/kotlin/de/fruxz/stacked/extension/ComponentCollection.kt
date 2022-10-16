@@ -51,8 +51,14 @@ fun <T : ComponentLike> Iterable<T>.joinToComponent(spliterator: ComponentLike, 
  * @since 1.0
  */
 val <T : ComponentLike> T.lines: List<Component>
-    get() = (asComponent().children().takeIf { it.isNotEmpty() } ?: listOf(asComponent()))
-        .splitBy { it == Component.newline() }
-        .map {
-            it.joinToComponent().colorIfAbsent(this.asComponent().color())
-        }
+    get() = this.asComponent().let { original ->
+        (original.children().takeIf { it.isNotEmpty() } ?: listOf(original))
+            .splitBy { it == Component.newline() }
+            .map {
+                it.joinToComponent().colorIfAbsent(original.color()).apply {
+                    if (hoverEvent() == null) hoverEvent(original.hoverEvent())
+                    if (clickEvent() == null) clickEvent(original.clickEvent())
+                    this.applyFallbackStyle(original.style())
+                }
+            }
+    }
