@@ -28,7 +28,7 @@ import net.kyori.adventure.text.format.TextColor
  * @author Fruxz
  * @since 1.0
  */
-fun buildComponent(base: TextComponent = Component.empty(), builder: Builder.() -> Unit): TextComponent =
+inline fun buildComponent(base: TextComponent = Component.empty(), builder: Builder.() -> Unit): TextComponent =
 	base.toBuilder().apply(builder).build()
 
 /* TODO reintroduce if context api gets available
@@ -152,7 +152,7 @@ infix operator fun Builder.plus(style: Style): Builder =
  * @since 1.0
  */
 @Stacked
-fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hoverEvent(process())
+inline fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hoverEvent(process())
 
 /**
  * This function converts the [content] to an [TextComponent] using the [String.asStyledComponent].
@@ -166,7 +166,7 @@ fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hov
  * @since 1.0
  */
 @Stacked
-fun text(content: String, builder: Builder.() -> Unit = { }) = content.asStyledComponent(builder)
+inline fun text(content: String, builder: Builder.() -> Unit = { }) = content.asStyledComponent(builder)
 
 /**
  * This function uses the [component] to apply it to an new [TextComponent.Builder]
@@ -178,7 +178,7 @@ fun text(content: String, builder: Builder.() -> Unit = { }) = content.asStyledC
  * @since 1.0
  */
 @Stacked
-fun text(component: ComponentLike, builder: Builder.() -> Unit = { }) =
+inline fun text(component: ComponentLike, builder: Builder.() -> Unit = { }) =
 	Component.text().append(component).apply(builder).build()
 
 /**
@@ -191,7 +191,7 @@ fun text(component: ComponentLike, builder: Builder.() -> Unit = { }) =
  * @since 1.0
  */
 @Stacked
-fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
+inline fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
 	componentBuilder.apply(builder).build()
 
 /**
@@ -204,7 +204,7 @@ fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
  * @since 1.0
  */
 @Stacked
-fun text(builder: Builder.() -> Unit) = text(Component.empty(), builder)
+inline fun text(builder: Builder.() -> Unit) = text(Component.empty(), builder)
 
 @DslMarker
 @PublishedApi

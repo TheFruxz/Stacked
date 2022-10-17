@@ -62,7 +62,7 @@ val ComponentLike.asPlainString: String
 val String.asComponent: TextComponent
 	get() = adventureSerializer.deserializeOr(this, Component.text("FAILED", NamedTextColor.RED))!!
 
-fun String.asComponent(builder: Builder.() -> Unit) =
+inline fun String.asComponent(builder: Builder.() -> Unit) =
 	Component.text().append(asComponent).apply(builder).build()
 
 /**
@@ -114,7 +114,7 @@ fun ComponentLike.asStyledString(strict: Boolean = true) =
 val String.asStyledComponent: TextComponent
 	get() = Component.text().append(miniMessageSerializer.deserializeOr(this, Component.empty())!!).build()
 
-fun String.asStyledComponent(builder: Builder.() -> Unit) =
+inline fun String.asStyledComponent(builder: Builder.() -> Unit) =
 	Component.text().append(asStyledComponent).apply(builder).build()
 
 /**

@@ -5,7 +5,6 @@ import de.fruxz.stacked.buildComponent
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
-import net.kyori.adventure.text.format.Style
 
 /**
  * This function creates a [TextComponent] containing
@@ -35,7 +34,7 @@ fun Iterable<ComponentLike>.joinToComponent(spliterator: ComponentLike): TextCom
  * @author Fruxz
  * @since 1.0
  */
-fun <T : ComponentLike> Iterable<T>.joinToComponent(spliterator: ComponentLike, builder: (T) -> ComponentLike): TextComponent = buildComponent {
+inline fun <T : ComponentLike> Iterable<T>.joinToComponent(spliterator: ComponentLike, builder: (T) -> ComponentLike): TextComponent = buildComponent {
     withIndex().forEach { (index, split) ->
         if (index > 0) append(spliterator)
         append(builder.invoke(split))
