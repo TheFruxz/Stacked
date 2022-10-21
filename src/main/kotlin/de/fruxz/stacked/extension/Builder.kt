@@ -8,6 +8,9 @@ import net.kyori.adventure.text.TextComponent
 fun TextComponent.Builder.newlines(amount: Int) = apply { repeat(amount) { append(Component.newline()) } }
 
 @Stacked
+fun TextComponent.Builder.newline() = apply { append(Component.newline()) }
+
+@Stacked
 fun TextComponent.Builder.space() = append(Component.space())
 
 @Stacked
