@@ -5,7 +5,8 @@
 
 ## 👋 Welcome to Stacked
 
-Placeholder
+Stacked is an assistive library, which provides helpful and easy to use tools, to work with the Adventure API.
+It is designed, to perfectly fit into the Adventure API used at a Paper Environment.
 
 ## ⚙️ Setup
 
