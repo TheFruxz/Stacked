@@ -50,7 +50,7 @@ inline fun <T : ComponentLike> Iterable<T>.joinToComponent(spliterator: Componen
  * @author Fruxz
  * @since 1.0
  */
-val <T : ComponentLike> T.lines: List<Component>
+val ComponentLike.lines: List<Component>
     get() = this.asComponent().let { original ->
         (original.children().takeIf { it.isNotEmpty() } ?: listOf(original))
             .splitBy { it == Component.newline() }

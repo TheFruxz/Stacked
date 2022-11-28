@@ -2,8 +2,8 @@ import org.gradle.api.JavaVersion.VERSION_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.21"
-    kotlin("plugin.serialization") version "1.7.21"
+    kotlin("jvm") version "1.7.22"
+    kotlin("plugin.serialization") version "1.7.22"
     id("org.jetbrains.dokka") version "1.7.20"
     `maven-publish`
 }
@@ -24,10 +24,11 @@ dependencies {
 
     implementation("com.github.TheFruxz:Ascend:7.0.0")
 
-    implementation("net.kyori:adventure-api:4.11.0")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.11.0")
-    implementation("net.kyori:adventure-text-minimessage:4.11.0")
-    implementation("net.kyori:adventure-text-serializer-plain:4.11.0")
+    implementation("net.kyori:adventure-api:4.12.0")
+    implementation("net.kyori:adventure-text-serializer-legacy:4.12.0")
+    implementation("net.kyori:adventure-text-minimessage:4.12.0")
+    implementation("net.kyori:adventure-text-serializer-plain:4.12.0")
+
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
     implementation("io.ktor:ktor-client-core-jvm:2.1.3")
 

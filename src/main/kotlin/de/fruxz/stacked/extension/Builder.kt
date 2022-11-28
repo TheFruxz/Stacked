@@ -6,13 +6,13 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 
 @Stacked
-fun TextComponent.Builder.newlines(amount: Int) = apply { repeat(amount) { append(Component.newline()) } }.dump()
+fun TextComponent.Builder.newlines(amount: Int) = apply { repeat(amount) { appendNewline() } }.dump()
 
 @Stacked
-fun TextComponent.Builder.newline() = apply { append(Component.newline()) }.dump()
+fun TextComponent.Builder.newline() = appendNewline().dump()
 
 @Stacked
-fun TextComponent.Builder.space() = append(Component.space()).dump()
+fun TextComponent.Builder.space() = appendSpace().dump()
 
 @Stacked
 fun TextComponent.Builder.spaces(amount: Int) = apply { repeat(amount) { space() } }.dump()
