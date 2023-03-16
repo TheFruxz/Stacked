@@ -1,8 +1,11 @@
 package de.fruxz.stacked.render
 
-import de.fruxz.ascend.tool.color.ColorBase
+import de.fruxz.ascend.extension.TransitionType
+import de.fruxz.ascend.extension.hexString
+import de.fruxz.ascend.extension.mix
 import de.fruxz.stacked.extension.asStyledComponent
 import net.kyori.adventure.text.TextComponent
+import java.awt.Color
 
 object FrameRenderer {
 
@@ -20,11 +23,11 @@ object FrameRenderer {
 	 * @author Fruxz
 	 * @since 1.0
 	 */
-	fun renderTransitionFrames(text: String, from: ColorBase<*>, to: ColorBase<*>): List<TextComponent> {
+	fun renderTransitionFrames(text: String, from: Color, to: Color, transitionType: TransitionType = TransitionType.EASY_IN_OUT): List<TextComponent> {
 
 		val splits = text.length / 2
-		val colorFrames = from.splitShiftTo(to, splits).toMutableList()
-		val startColors = from.splitShiftTo(to, 3)
+		val colorFrames = from.mix(to, splits, transitionType).toMutableList()
+		val startColors = from.mix(to, 3, transitionType)
 
 		return buildList {
 
