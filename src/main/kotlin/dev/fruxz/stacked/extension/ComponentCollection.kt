@@ -1,7 +1,7 @@
-package de.fruxz.stacked.extension
+package dev.fruxz.stacked.extension
 
 import de.fruxz.ascend.extension.container.splitBy
-import de.fruxz.stacked.buildComponent
+import dev.fruxz.stacked.buildComponent
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent

@@ -1,4 +1,4 @@
-package de.fruxz.stacked.extension
+package dev.fruxz.stacked.extension
 
 import de.fruxz.ascend.extension.switchResult
 import net.kyori.adventure.text.Component

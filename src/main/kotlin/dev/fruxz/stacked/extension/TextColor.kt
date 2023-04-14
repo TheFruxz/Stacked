@@ -1,6 +1,6 @@
-package de.fruxz.stacked.extension
+package dev.fruxz.stacked.extension
 
-import de.fruxz.stacked.Stacked
+import dev.fruxz.stacked.Stacked
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor

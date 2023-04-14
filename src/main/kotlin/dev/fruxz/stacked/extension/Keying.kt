@@ -1,7 +1,7 @@
-package de.fruxz.stacked.extension
+package dev.fruxz.stacked.extension
 
 import net.kyori.adventure.key.Key
-import de.fruxz.stacked.extension.KeyingStrategy.*
+import dev.fruxz.stacked.extension.KeyingStrategy.*
 import java.util.*
 
 fun Key.subKey(value: String, strategy: KeyingStrategy = CONTINUE): Key = Key.key(

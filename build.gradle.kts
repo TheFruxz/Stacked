@@ -11,7 +11,7 @@ plugins {
 var host = "github.com/TheFruxz/Stacked"
 
 version = "2023.2"
-group = "de.fruxz"
+group = "dev.fruxz"
 
 repositories {
     mavenCentral()

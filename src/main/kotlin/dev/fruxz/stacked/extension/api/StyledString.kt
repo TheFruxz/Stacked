@@ -1,6 +1,6 @@
-package de.fruxz.stacked.extension.api
+package dev.fruxz.stacked.extension.api
 
-import de.fruxz.stacked.Stacked
+import dev.fruxz.stacked.Stacked
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
 

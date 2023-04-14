@@ -1,6 +1,6 @@
-package de.fruxz.stacked.extension
+package dev.fruxz.stacked.extension
 
-import de.fruxz.stacked.extension.api.StyledString
+import dev.fruxz.stacked.extension.api.StyledString
 import net.kyori.adventure.text.ComponentLike
 import kotlin.time.Duration
 import kotlin.time.toJavaDuration

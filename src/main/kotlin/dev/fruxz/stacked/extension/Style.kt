@@ -1,6 +1,6 @@
-package de.fruxz.stacked.extension
+package dev.fruxz.stacked.extension
 
-import de.fruxz.stacked.Stacked
+import dev.fruxz.stacked.Stacked
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.format.Style
