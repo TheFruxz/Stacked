@@ -1,5 +1,6 @@
 package de.fruxz.stacked
 
+import de.fruxz.stacked.extension.api.StyledString
 import de.fruxz.stacked.extension.asStyledComponent
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
@@ -51,9 +52,9 @@ context(Builder)
 
 /**
  * This operator function, which will be replaced with an *unaryPlus* function in the future,
- * allows you to append a [String] specified by [styledString] to the current [Builder] using
+ * allows you to append a [String] specified by [content] to the current [Builder] using
  * the conversion via the [String.asStyledComponent] value.
- * @param styledString The string, which will be converted and applied to this [Builder]
+ * @param content The string, which will be converted and applied to this [Builder]
  * @return The current [Builder] instance
  * @see String.asStyledComponent
  * @see Builder.append
@@ -61,8 +62,8 @@ context(Builder)
  * @since 1.0
  */
 @Stacked
-infix operator fun Builder.plus(styledString: String): Builder =
-	append(styledString.asStyledComponent)
+infix operator fun Builder.plus(@StyledString content: String): Builder =
+	append(content.asStyledComponent)
 
 /**
  * This operator function, which will be replaced with an *unaryPlus* function in the future,
@@ -166,7 +167,7 @@ inline fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = t
  * @since 1.0
  */
 @Stacked
-inline fun text(content: String, builder: Builder.() -> Unit = { }) = content.asStyledComponent(builder)
+inline fun text(@StyledString content: String, builder: Builder.() -> Unit = { }) = content.asStyledComponent(builder)
 
 /**
  * This function uses the [component] to apply it to an new [TextComponent.Builder]

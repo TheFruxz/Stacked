@@ -1,5 +1,6 @@
 package de.fruxz.stacked.extension
 
+import de.fruxz.stacked.extension.api.StyledString
 import net.kyori.adventure.text.ComponentLike
 import kotlin.time.Duration
 import kotlin.time.toJavaDuration
@@ -13,8 +14,8 @@ fun Title(
 ) = AdventureTitle.title(title.asComponent(), subtitle.asComponent(), times)
 
 fun Title(
-    styledTitle: String,
-    styledSubtitle: String,
+    @StyledString styledTitle: String,
+    @StyledString styledSubtitle: String,
     times: AdventureTimes? = null,
 ) = AdventureTitle.title(styledTitle.asStyledComponent, styledSubtitle.asStyledComponent, times)
 
