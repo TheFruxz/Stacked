@@ -7,7 +7,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage
 /**
  * This annotation is used to mark a parameter as a styled string.
  * This means the String is transformed into a [Component], using
- * the [MiniMessage] format. So this consumes for example <b>bold</b>,
+ * the [MiniMessage] format. So this consumes for example `<b>bold</b>`,
  * but has the side effect that old colors like §2 are not supported.
  * @see MiniMessage
  * @see MiniMessage.miniMessage
