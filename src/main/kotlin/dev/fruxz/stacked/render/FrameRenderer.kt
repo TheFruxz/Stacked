@@ -1,8 +1,8 @@
 package dev.fruxz.stacked.render
 
-import de.fruxz.ascend.extension.TransitionType
-import de.fruxz.ascend.extension.hexString
-import de.fruxz.ascend.extension.mix
+import dev.fruxz.ascend.extension.TransitionType
+import dev.fruxz.ascend.extension.hexString
+import dev.fruxz.ascend.extension.mix
 import dev.fruxz.stacked.extension.asStyledComponent
 import net.kyori.adventure.text.TextComponent
 import java.awt.Color

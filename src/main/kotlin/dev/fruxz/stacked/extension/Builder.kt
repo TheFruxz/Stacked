@@ -1,8 +1,7 @@
 package dev.fruxz.stacked.extension
 
-import de.fruxz.ascend.extension.dump
+import dev.fruxz.ascend.extension.dump
 import dev.fruxz.stacked.Stacked
-import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 
 @Stacked
