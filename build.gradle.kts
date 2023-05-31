@@ -30,7 +30,7 @@ dependencies {
     implementation("net.kyori:adventure-text-serializer-plain:4.13.1")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    implementation("io.ktor:ktor-client-core-jvm:2.3.0")
+    implementation("io.ktor:ktor-client-core-jvm:2.3.1")
 
 }
 
