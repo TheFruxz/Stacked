@@ -25,7 +25,7 @@ dependencies {
     implementation("com.github.TheFruxz:Ascend:ba6c401235")
 
     implementation("net.kyori:adventure-api:4.14.0")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.13.1")
+    implementation("net.kyori:adventure-text-serializer-legacy:4.14.0")
     implementation("net.kyori:adventure-text-minimessage:4.14.0")
     implementation("net.kyori:adventure-text-serializer-plain:4.13.1")
 
