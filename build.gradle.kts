@@ -27,7 +27,7 @@ dependencies {
     implementation("net.kyori:adventure-api:4.14.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.14.0")
     implementation("net.kyori:adventure-text-minimessage:4.14.0")
-    implementation("net.kyori:adventure-text-serializer-plain:4.13.1")
+    implementation("net.kyori:adventure-text-serializer-plain:4.14.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     implementation("io.ktor:ktor-client-core-jvm:2.3.1")
