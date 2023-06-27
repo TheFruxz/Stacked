@@ -1,6 +1,6 @@
 package dev.fruxz.stacked.extension
 
-import dev.fruxz.ascend.extension.switchResult
+import dev.fruxz.ascend.extension.switch
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
@@ -100,7 +100,7 @@ val ComponentLike.asStyledString: String
 	get() = strictMiniMessageSerializer.serialize(asComponent())
 
 fun ComponentLike.asStyledString(strict: Boolean = true) =
-	strict.switchResult(asStyledString, miniMessageSerializer.serialize(asComponent()))
+	strict.switch(asStyledString, miniMessageSerializer.serialize(asComponent()))
 
 /**
  * This computational value converts this [String] into a [TextComponent]
