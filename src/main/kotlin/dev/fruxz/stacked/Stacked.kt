@@ -67,7 +67,7 @@ infix operator fun Builder.plus(@StyledString content: String): Builder =
 
 /**
  * This operator function, which will be replaced with an *unaryPlus* function in the future,
- * allows you to append a [ComponentLike] specified by [componentLike] to the current [Builder].
+ * allows you to append a [ComponentLike] specified by [component] to the current [Builder].
  * @param component The [ComponentLike] instance, which will be applied to this [Builder]
  * @return The current [Builder] instance
  * @see Builder.append

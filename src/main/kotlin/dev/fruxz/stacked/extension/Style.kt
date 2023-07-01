@@ -38,7 +38,7 @@ operator fun TextDecoration.plus(color: TextColor) =
  * @since 1.0
  */
 @Stacked
-operator fun <T : StyleSetter<T>> T.plus(color: TextColor) =
+operator fun <T : StyleSetter<T>> T.plus(color: TextColor): T =
 	this.color(color)
 
 /**
@@ -82,8 +82,8 @@ infix fun TextComponent.style(style: Style) =
  * @since 1.0
  */
 @Stacked
-infix fun TextComponent.style(color: TextColor) =
-	this + color
+infix fun TextComponent.style(color: TextColor): Component =
+	(this + color)
 
 @Stacked
 fun Component.style(color: TextColor, vararg decorations: TextDecoration) =
