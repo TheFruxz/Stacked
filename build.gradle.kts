@@ -20,7 +20,7 @@ repositories {
 
 dependencies {
 
-    @Suppress("DependencyOnStdlib") implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
 
     implementation("com.github.TheFruxz:Ascend:2023.2")
 
@@ -30,26 +30,6 @@ dependencies {
     implementation("net.kyori:adventure-text-serializer-plain:4.14.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-
-}
-
-java {
-    sourceCompatibility = VERSION_17
-    targetCompatibility = VERSION_17
-    withJavadocJar()
-    withSourcesJar()
-}
-
-tasks {
-
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
-        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-    }
-
-    dokkaHtml.configure {
-        outputDirectory.set(buildDir.resolve("../docs/"))
-    }
 
 }
 
@@ -65,7 +45,7 @@ val dokkaHtmlJar by tasks.register<Jar>("dokkaHtmlJar") {
     archiveClassifier.set("html-doc")
 }
 
-val source by tasks.register<Jar>("sourceJar") {
+val sourceJar by tasks.register<Jar>("sourceJar") {
     from(sourceSets.main.get().allSource)
     archiveClassifier.set("sources")
 }
@@ -88,16 +68,38 @@ publishing {
     }
 
     publications.create("Stacked", MavenPublication::class) {
-
-        from(components["kotlin"])
+        artifactId = "stacked"
+        version = version.lowercase()
 
         artifact(dokkaJavadocJar)
         artifact(dokkaHtmlJar)
-        artifact(source)
+        artifact(sourceJar) {
+            classifier = "sources"
+        }
 
-        artifactId = "stacked"
-        version = version.toLowerCase()
+        from(components["kotlin"])
 
     }
 
+}
+
+tasks {
+
+    withType<KotlinCompile> {
+        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
+
+    dokkaHtml.configure {
+        outputDirectory.set(buildDir.resolve("../docs/"))
+    }
+
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+java {
+    sourceCompatibility = VERSION_17
+    targetCompatibility = VERSION_17
 }
