@@ -23,7 +23,7 @@ object FrameRenderer {
 	 * @author Fruxz
 	 * @since 1.0
 	 */
-	fun renderTransitionFrames(text: String, from: Color, to: Color, transitionType: TransitionType = TransitionType.EASY_IN_OUT): List<TextComponent> {
+	fun renderTransitionFrames(text: String, from: Color, to: Color, transitionType: TransitionType = TransitionType.Default.EASY_IN_OUT): List<TextComponent> {
 
 		val splits = text.length / 2
 		val colorFrames = from.mix(to, splits, transitionType).toMutableList()
