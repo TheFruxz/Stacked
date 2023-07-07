@@ -37,7 +37,7 @@ object FrameRenderer {
 				add("<gradient:${from.hexString}:${startColors[step].hexString}:${from.hexString}>$text")
 			}
 
-			for (x in 0 until colorFrames.size) {
+			for (x in 0 ..< colorFrames.size) {
 
 				add("<gradient:${colorFrames.firstOrNull()?.hexString}:${colorFrames.lastOrNull()?.hexString}:${colorFrames.firstOrNull()?.hexString}>$text")
 
