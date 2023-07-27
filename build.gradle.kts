@@ -10,7 +10,7 @@ plugins {
 
 var host = "github.com/TheFruxz/Stacked"
 
-version = "2023.3-dev"
+version = "2023.3"
 group = "dev.fruxz"
 
 repositories {
