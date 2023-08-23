@@ -29,7 +29,7 @@ dependencies {
     implementation("net.kyori:adventure-text-minimessage:4.14.0")
     implementation("net.kyori:adventure-text-serializer-plain:4.14.0")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
 }
 
