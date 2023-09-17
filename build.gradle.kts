@@ -2,9 +2,9 @@ import org.gradle.api.JavaVersion.VERSION_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.0"
-    kotlin("plugin.serialization") version "1.9.0"
-    id("org.jetbrains.dokka") version "1.8.20"
+    kotlin("jvm") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.10"
+    id("org.jetbrains.dokka") version "1.9.0"
     `maven-publish`
 }
 
@@ -29,7 +29,7 @@ dependencies {
     implementation("net.kyori:adventure-text-minimessage:4.14.0")
     implementation("net.kyori:adventure-text-serializer-plain:4.14.0")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
 }
 
