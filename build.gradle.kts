@@ -22,7 +22,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    implementation("com.github.TheFruxz:Ascend:2023.4-beta4")
+    implementation("com.github.TheFruxz:Ascend:2023.4-RC")
 
     implementation("net.kyori:adventure-api:4.14.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.14.0")
