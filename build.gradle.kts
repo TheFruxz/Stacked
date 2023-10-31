@@ -86,7 +86,7 @@ publishing {
 tasks {
 
     withType<KotlinCompile> {
-        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+        kotlinOptions.freeCompilerArgs += "-Xcontext-receivers"
     }
 
     dokkaHtml.configure {
