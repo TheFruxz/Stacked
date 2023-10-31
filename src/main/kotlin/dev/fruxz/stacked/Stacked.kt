@@ -1,5 +1,7 @@
 package dev.fruxz.stacked
 
+import dev.fruxz.ascend.extension.dump
+import dev.fruxz.stacked.extension.api.StackedExperimental
 import dev.fruxz.stacked.extension.api.StyledString
 import dev.fruxz.stacked.extension.asStyledComponent
 import net.kyori.adventure.text.Component
@@ -32,23 +34,33 @@ import net.kyori.adventure.text.format.TextColor
 inline fun buildComponent(base: TextComponent = Component.empty(), builder: Builder.() -> Unit): TextComponent =
 	base.toBuilder().apply(builder).build()
 
-/* TODO reintroduce if context api gets available
+// context receivers
+
 context(Builder)
-@Unfold operator fun String.unaryPlus(): Unit =
+@Stacked
+@StackedExperimental
+operator fun String.unaryPlus(): Unit =
 	append(this.asStyledComponent).dump()
 
 context(Builder)
-@Unfold operator fun ComponentLike.unaryPlus(): Builder =
-	append(this)
+@Stacked
+@StackedExperimental
+operator fun ComponentLike.unaryPlus(): Unit =
+	append(this).dump()
 
 context(Builder)
-@Unfold operator fun <T : Iterable<ComponentLike>> T.unaryPlus(): Builder =
-	append(this)
+@Stacked
+@StackedExperimental
+operator fun <T : Iterable<ComponentLike>> T.unaryPlus(): Unit =
+	append(this).dump()
 
 context(Builder)
-@Unfold operator fun ClickEvent.unaryPlus(): Builder =
-	clickEvent(this)
- */
+@Stacked
+@StackedExperimental
+operator fun ClickEvent.unaryPlus(): Unit =
+	clickEvent(this).dump()
+
+// context receivers END
 
 /**
  * This operator function, which will be replaced with an *unaryPlus* function in the future,
