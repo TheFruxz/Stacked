@@ -15,14 +15,14 @@ group = "dev.fruxz"
 
 repositories {
     mavenCentral()
-    maven("https://jitpack.io")
+    maven("https://repo.fruxz.dev/releases")
 }
 
 dependencies {
 
     testImplementation(kotlin("test"))
 
-    implementation("com.github.TheFruxz:Ascend:2023.5.1")
+    implementation("dev.fruxz:ascend:2023.5.2")
 
     implementation("net.kyori:adventure-api:4.15.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.15.0")
