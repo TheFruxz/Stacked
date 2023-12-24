@@ -1,4 +1,3 @@
-import org.gradle.api.JavaVersion.VERSION_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -53,22 +52,18 @@ val sourceJar by tasks.register<Jar>("sourceJar") {
 publishing {
 
     repositories {
-
         mavenLocal()
-
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.$host")
+        maven("https://repo.fruxz.dev/releases") {
+            name = "fruxz.dev"
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = project.findProperty("fruxz.dev.user") as? String? ?: System.getenv("FRUXZ_DEV_USER")
+                password = project.findProperty("fruxz.dev.secret") as? String? ?: System.getenv("FRUXZ_DEV_SECRET")
             }
         }
-
     }
 
     publications.create("Stacked", MavenPublication::class) {
-        artifactId = "stacked"
+        artifactId = name.lowercase()
         version = version.lowercase()
 
         artifact(dokkaJavadocJar)
@@ -100,6 +95,6 @@ kotlin {
 }
 
 java {
-    sourceCompatibility = VERSION_17
-    targetCompatibility = VERSION_17
+    withJavadocJar()
+    withSourcesJar()
 }
