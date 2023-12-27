@@ -11,8 +11,11 @@
       <option name="taskNames">
         <list>
           <option value="clean" />
+          <option value="test" />
           <option value="build" />
+          <option value="javadoc" />
           <option value="publishToMavenLocal" />
+          <option value="dokkaHtml" />
         </list>
       </option>
       <option name="vmOptions" />
