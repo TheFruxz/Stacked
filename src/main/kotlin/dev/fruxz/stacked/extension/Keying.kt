@@ -3,20 +3,47 @@ package dev.fruxz.stacked.extension
 import net.kyori.adventure.key.Key
 import dev.fruxz.stacked.extension.KeyingStrategy.*
 import java.util.*
+import kotlin.jvm.Throws
 
-fun Key.subKey(value: String, strategy: KeyingStrategy = CONTINUE): Key = Key.key(
-	when (strategy) {
-		SQUASH -> asString().replace(":", "_")
-		ORIGIN -> namespace()
-		CONTINUE -> value()
-		PATHING -> namespace()
-	},
-	when (strategy) {
-		PATHING -> "${value()}.${value.lowercase(Locale.ENGLISH).replace(" ", "_")}"
-		else -> value.lowercase(Locale.ENGLISH).replace(" ", "_")
+/**
+ * This function creates a new [Key] object, which originates from [this] key,
+ * using the [value] as the value of the new key. The [strategy] is used to
+ * determine how the new key is generated.
+ * @throws IllegalArgumentException if the [value] does not match the [KEY_REGEX]
+ * @author Fruxz
+ * @since 2024.1
+ */
+@Throws(IllegalArgumentException::class)
+fun Key.subKey(value: String, strategy: KeyingStrategy = CONTINUE): Key {
+	val part = value.lowercase(Locale.ENGLISH).replace(" ", "_")
+
+	if (!part.all { "$it" matches KEY_REGEX }) {
+		throw IllegalArgumentException("The value '$value' does not match the key regex $KEY_REGEX")
 	}
-)
 
+	return Key.key(
+		when (strategy) {
+			SQUASH -> asString().replace(":", "_")
+			ORIGIN -> namespace()
+			CONTINUE -> value()
+			PATHING -> namespace()
+		},
+		when (strategy) {
+			PATHING -> "${value()}.$part"
+			else -> part
+		}
+	)
+}
+
+/**
+ * This function creates a new [Key] object, which originates from [this] key,
+ * using the [Key.subKey] function with the [value] as the value of the new key.
+ * @throws IllegalArgumentException if the [value] does not match the [KEY_REGEX]
+ * @see Key.subKey
+ * @author Fruxz
+ * @since 2024.1
+ */
+@Throws(IllegalArgumentException::class)
 infix operator fun Key.div(value: String): Key = subKey(value)
 
 val KEY_REGEX = "[a-z0-9_.-]".toRegex()
