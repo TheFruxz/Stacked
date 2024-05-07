@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.23"
+    kotlin("jvm") version "1.9.24"
     kotlin("plugin.serialization") version "1.9.23"
     id("org.jetbrains.dokka") version "1.9.20"
     `maven-publish`
