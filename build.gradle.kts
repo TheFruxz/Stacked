@@ -23,7 +23,7 @@ dependencies {
 
     implementation("dev.fruxz:ascend:2024.1.2")
 
-    implementation("net.kyori:adventure-api:4.16.0")
+    implementation("net.kyori:adventure-api:4.17.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.16.0")
     implementation("net.kyori:adventure-text-minimessage:4.17.0")
     implementation("net.kyori:adventure-text-serializer-plain:4.16.0")
