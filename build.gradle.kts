@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
@@ -21,7 +19,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    implementation("dev.fruxz:ascend:2024.1.2")
+    implementation("dev.fruxz:ascend:2024.2")
 
     implementation("net.kyori:adventure-api:4.17.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.17.0")
@@ -73,7 +71,6 @@ publishing {
         }
 
         from(components["kotlin"])
-
     }
 
 }
