@@ -80,8 +80,10 @@ publishing {
 
 tasks {
 
-    withType<KotlinCompile> {
-        kotlinOptions.freeCompilerArgs += "-Xcontext-receivers"
+    kotlin {
+        compilerOptions {
+            freeCompilerArgs.add("-Xcontext-receivers")
+        }
     }
 
     dokkaHtml.configure {
