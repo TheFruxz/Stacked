@@ -21,7 +21,7 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    implementation("dev.fruxz:ascend:2024.2.2")
+    implementation("dev.fruxz:ascend:2025.3-2193416")
 
     implementation("net.kyori:adventure-api:4.17.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.17.0")
