@@ -1,10 +1,9 @@
 package dev.fruxz.stacked
 
-import dev.fruxz.ascend.extension.dump
-import dev.fruxz.stacked.extension.api.StackedExperimental
 import dev.fruxz.stacked.extension.api.StyledString
 import dev.fruxz.stacked.extension.asStyledComponent
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.ComponentBuilder
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.TextComponent.Builder
@@ -31,34 +30,8 @@ import net.kyori.adventure.text.format.TextColor
  * @author Fruxz
  * @since 1.0
  */
-inline fun buildComponent(base: TextComponent = Component.empty(), builder: Builder.() -> Unit): TextComponent =
-	base.toBuilder().apply(builder).build()
-
-// context receivers
-
-context(Builder)
-@Stacked
-@StackedExperimental
-operator fun String.unaryPlus(): Unit =
-	append(this.asStyledComponent).dump()
-
-context(Builder)
-@Stacked
-@StackedExperimental
-operator fun ComponentLike.unaryPlus(): Unit =
-	append(this).dump()
-
-context(Builder)
-@Stacked
-@StackedExperimental
-operator fun <T : Iterable<ComponentLike>> T.unaryPlus(): Unit =
-	append(this).dump()
-
-context(Builder)
-@Stacked
-@StackedExperimental
-operator fun ClickEvent.unaryPlus(): Unit =
-	clickEvent(this).dump()
+inline fun buildComponent(base: TextComponent = Component.empty(), builder: StackedBuilder.() -> Unit): TextComponent =
+	StackedBuilder(base.toBuilder()).apply(builder).build()
 
 // context receivers END
 
@@ -167,6 +140,12 @@ infix operator fun Builder.plus(style: Style): Builder =
 @Stacked
 inline fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hoverEvent(process())
 
+@Stacked
+fun Component.click(process: () -> ClickEvent?) = this.clickEvent(process())
+
+@Stacked
+fun Builder.click(process: () -> ClickEvent?) = this.clickEvent(process())
+
 /**
  * This function converts the [content] to an [TextComponent] using the [String.asStyledComponent].
  * MiniMessage is used to give the ability to apply colors, styles and more using only text.
@@ -179,7 +158,7 @@ inline fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = t
  * @since 1.0
  */
 @Stacked
-inline fun text(@StyledString content: String, builder: Builder.() -> Unit = { }) = content.asStyledComponent(builder)
+inline fun text(@StyledString content: String, builder: StackedBuilder.() -> Unit = { }) = content.asStyledComponent(builder)
 
 /**
  * This function uses the [component] to apply it to an new [TextComponent.Builder]
@@ -191,8 +170,8 @@ inline fun text(@StyledString content: String, builder: Builder.() -> Unit = { }
  * @since 1.0
  */
 @Stacked
-inline fun text(component: ComponentLike, builder: Builder.() -> Unit = { }) =
-	Component.text().append(component).apply(builder).build()
+inline fun text(component: ComponentLike, builder: StackedBuilder.() -> Unit = { }) =
+	StackedBuilder(Component.text().append(component)).apply(builder).build()
 
 /**
  * This function uses the [componentBuilder] and applies the [builder] process
@@ -204,8 +183,8 @@ inline fun text(component: ComponentLike, builder: Builder.() -> Unit = { }) =
  * @since 1.0
  */
 @Stacked
-inline fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
-	componentBuilder.apply(builder).build()
+inline fun text(componentBuilder: Builder, builder: StackedBuilder.() -> Unit = { }) =
+	StackedBuilder(componentBuilder).apply(builder).build()
 
 /**
  * This function uses a new [Component.empty] component and applies the [builder] process
@@ -217,7 +196,7 @@ inline fun text(componentBuilder: Builder, builder: Builder.() -> Unit = { }) =
  * @since 1.0
  */
 @Stacked
-inline fun text(builder: Builder.() -> Unit) = text(Component.empty(), builder)
+inline fun text(builder: StackedBuilder.() -> Unit) = text(Component.empty(), builder)
 
 @DslMarker
 @PublishedApi

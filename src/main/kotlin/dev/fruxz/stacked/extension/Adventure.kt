@@ -1,10 +1,10 @@
 package dev.fruxz.stacked.extension
 
 import dev.fruxz.ascend.extension.switch
+import dev.fruxz.stacked.StackedBuilder
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
-import net.kyori.adventure.text.TextComponent.Builder
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
@@ -62,8 +62,8 @@ val ComponentLike.asPlainString: String
 val String.asComponent: TextComponent
 	get() = adventureSerializer.deserializeOr(this, Component.text("FAILED", NamedTextColor.RED))!!
 
-inline fun String.asComponent(builder: Builder.() -> Unit) =
-	Component.text().append(asComponent).apply(builder).build()
+inline fun String.asComponent(builder: StackedBuilder.() -> Unit) =
+	Component.text().append(asComponent).toStackedBuilder().apply(builder).build()
 
 /**
  * This computational value converts this [String] into a [TextComponent]
@@ -114,8 +114,8 @@ fun ComponentLike.asStyledString(strict: Boolean = true) =
 val String.asStyledComponent: TextComponent
 	get() = Component.text().append(miniMessageSerializer.deserializeOr(this, Component.empty())!!).build()
 
-inline fun String.asStyledComponent(builder: Builder.() -> Unit) =
-	Component.text().append(asStyledComponent).apply(builder).build()
+inline fun String.asStyledComponent(builder: StackedBuilder.() -> Unit) =
+	StackedBuilder(Component.text().append(asStyledComponent)).apply(builder).build()
 
 /**
  * This computational value converts this [String] into a [TextComponent]
