@@ -100,3 +100,60 @@ fun TextComponent.Builder.style(color: TextColor, vararg decorations: TextDecora
 @Stacked
 fun TextComponent.Builder.style(vararg decorations: TextDecoration) =
 	style(Style.style(*decorations))
+
+@Stacked
+fun <T : StyleSetter<T>> T.style(decoration: TextDecoration, flag: Boolean) = apply {
+	decoration(decoration, flag)
+}
+
+@Stacked
+fun <T : StyleSetter<T>> T.style(vararg decorations: Pair<TextDecoration, Boolean>) = apply {
+	decorations.forEach { (decoration, flag) -> decoration(decoration, flag) }
+}
+
+// defaults
+
+/**
+ * Applies the [TextDecoration.BOLD] to [this] [TextComponent] using [style].
+ * @author Fruxz
+ * @since 2025.1
+ */
+@Stacked
+fun <T : StyleSetter<T>> T.bold(flag: Boolean = true) =
+	style(TextDecoration.BOLD, flag)
+
+/**
+ * Applies the [TextDecoration.ITALIC] to [this] [TextComponent] using [style].
+ * @author Fruxz
+ * @since 2025.1
+ */
+@Stacked
+fun <T : StyleSetter<T>> T.italic(flag: Boolean = true) =
+	style(TextDecoration.ITALIC, flag)
+
+/**
+ * Applies the [TextDecoration.UNDERLINED] to [this] [TextComponent] using [style].
+ * @author Fruxz
+ * @since 2025.1
+ */
+@Stacked
+fun <T : StyleSetter<T>> T.underlined(flag: Boolean = true) =
+	style(TextDecoration.UNDERLINED, flag)
+
+/**
+ * Applies the [TextDecoration.STRIKETHROUGH] to [this] [TextComponent] using [style].
+ * @author Fruxz
+ * @since 2025.1
+ */
+@Stacked
+fun <T : StyleSetter<T>> T.strikethrough(flag: Boolean = true) =
+	style(TextDecoration.STRIKETHROUGH, flag)
+
+/**
+ * Applies the [TextDecoration.OBFUSCATED] to [this] [TextComponent] using [style].
+ * @author Fruxz
+ * @since 2025.1
+ */
+@Stacked
+fun <T : StyleSetter<T>> T.obfuscated(flag: Boolean = true) =
+	style(TextDecoration.OBFUSCATED, flag)
