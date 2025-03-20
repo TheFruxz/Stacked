@@ -1,1 +1,1 @@
-rootProject.name = "Stacked"
+rootProject.name = "stacked"
