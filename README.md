@@ -32,5 +32,21 @@ Of course, you can also participate in Stacked and contribute to the development
 
 If you have any questions, suggestions or other items you would like to contribute to Stacked or just discuss, check out the Discussions' section of this repository, where you will find the respective areas where you can create your own questions or join in discussions on other things.
 
+## Example
+
+By using the text function, you can easily create new text components. With the unaryPlus (+) operator, you can attach some components, or styled strings using the MiniMessage format to this component with ease!
+
+```kotlin
+    text {
+        + "<rainbow>WOW! This is amazing!</rainbow>"
+        + " "
+        + text {
+            + "CLICK" { bold().dyeYellow() }
+            + " ME" { italic().dyeYellow() }
+            hover { text("This is hovering!") }
+        }
+    }
+```
+
 ###### We build & use Stacked on Java 17 - [Eclipse Temurin](https://adoptium.net/).
 ###### Also build & run Stacked with [Eclipse Temurin](https://adoptium.net/) to get the best possible experience!
