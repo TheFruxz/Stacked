@@ -1,3 +1,5 @@
+import java.util.*
+
 plugins {
     kotlin("jvm") version "2.1.20"
     kotlin("plugin.serialization") version "2.1.10"
@@ -6,10 +8,10 @@ plugins {
     `maven-publish`
 }
 
-var host = "github.com/TheFruxz/Stacked"
 val publishVersion = System.getenv("GH_RELEASE_VERSION")
+val calendar = Calendar.getInstance()
 
-version = "2025.1"
+version = publishVersion ?: "${calendar[Calendar.YEAR]}.${calendar[Calendar.MONTH] + 1}-dev"
 group = "dev.fruxz"
 
 repositories {
