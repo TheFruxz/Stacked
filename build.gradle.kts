@@ -1,11 +1,13 @@
 plugins {
     kotlin("jvm") version "2.1.10"
-    kotlin("plugin.serialization") version "2.0.21"
-    id("org.jetbrains.dokka") version "1.9.20"
+    kotlin("plugin.serialization") version "2.1.10"
+    id("org.jetbrains.dokka") version "2.0.0"
+    id("org.hildan.kotlin-publish") version "1.7.0"
     `maven-publish`
 }
 
 var host = "github.com/TheFruxz/Stacked"
+val publishVersion = System.getenv("GH_RELEASE_VERSION")
 
 version = "2025.1"
 group = "dev.fruxz"
@@ -54,23 +56,10 @@ publishing {
         maven("https://repo.fruxz.dev/releases") {
             name = "fruxz.dev"
             credentials {
-                username = project.findProperty("fruxz.dev.user") as? String? ?: System.getenv("FRUXZ_DEV_USER")
-                password = project.findProperty("fruxz.dev.secret") as? String? ?: System.getenv("FRUXZ_DEV_SECRET")
+                username = System.getenv("FRUXZ_DEV_USER")
+                password = System.getenv("FRUXZ_DEV_SECRET")
             }
         }
-    }
-
-    publications.create("Stacked", MavenPublication::class) {
-        artifactId = name.lowercase()
-        version = version.lowercase()
-
-        artifact(dokkaJavadocJar)
-        artifact(dokkaHtmlJar)
-        artifact(sourceJar) {
-            classifier = "sources"
-        }
-
-        from(components["kotlin"])
     }
 
 }
@@ -89,11 +78,20 @@ tasks {
 
 }
 
-kotlin {
-    jvmToolchain(21)
+tasks {
+
+    compileKotlin {
+        compilerOptions {
+            freeCompilerArgs.add("-opt-in=kotlinx.serialization.ExperimentalSerializationApi")
+        }
+    }
+
+    dokkaHtml.configure {
+        outputDirectory.set(layout.projectDirectory.dir("docs"))
+    }
+
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
+kotlin {
+    jvmToolchain(23)
 }
