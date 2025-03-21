@@ -1,11 +1,11 @@
-[![Build Library](https://github.com/TheFruxz/Stacked/actions/workflows/build-Stacked.yml/badge.svg)](https://github.com/TheFruxz/Stacked/actions/workflows/build-Stacked.yml)
-[![Publish Library](https://github.com/TheFruxz/Stacked/actions/workflows/publish-Stacked.yml/badge.svg)](https://github.com/TheFruxz/Stacked/actions/workflows/publish-Stacked.yml)
 # ![Stacked Banner](https://user-images.githubusercontent.com/28064149/193399365-3801846c-2552-49c4-84b6-e060e7ce03dc.jpg)
 
 
 <br>
 
 ## 👋 Welcome to Stacked
+[![Build Library](https://github.com/TheFruxz/Stacked/actions/workflows/build-Stacked.yml/badge.svg)](https://github.com/TheFruxz/Stacked/actions/workflows/build-Stacked.yml)
+[![Publish Library](https://github.com/TheFruxz/Stacked/actions/workflows/publish-Stacked.yml/badge.svg)](https://github.com/TheFruxz/Stacked/actions/workflows/publish-Stacked.yml)
 
 Stacked is an assistive library, which provides helpful and easy to use tools, to work with the Adventure API.
 It is designed, to perfectly fit into the Adventure API used at a Paper Environment.
