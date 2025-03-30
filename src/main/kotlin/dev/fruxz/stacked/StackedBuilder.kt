@@ -12,7 +12,7 @@ import net.kyori.adventure.text.event.ClickEvent
  * and adds additional operator functions to make building
  * [TextComponent]s more convenient.
  */
-data class StackedBuilder(
+open class StackedBuilder(
     private val builder: TextComponent.Builder,
 ) : TextComponent.Builder by builder {
 
