@@ -16,14 +16,14 @@ group = "dev.fruxz"
 
 repositories {
     mavenCentral()
-    maven("https://repo.fruxz.dev/releases")
+    maven("https://nexus.fruxz.dev/repository/public/")
 }
 
 dependencies {
 
     testImplementation(kotlin("test"))
 
-    implementation("dev.fruxz:ascend:2025.3-c701147")
+    implementation("dev.fruxz:ascend:2025.5-c701147")
 
     implementation("net.kyori:adventure-api:4.17.0")
     implementation("net.kyori:adventure-text-serializer-legacy:4.17.0")
@@ -38,13 +38,14 @@ publishing {
 
     repositories {
         mavenLocal()
-        maven("https://repo.fruxz.dev/releases") {
+        maven("https://nexus.fruxz.dev/repository/releases/") {
             name = "fruxz.dev"
             credentials {
-                username = System.getenv("FRUXZ_DEV_USER")
-                password = System.getenv("FRUXZ_DEV_SECRET")
+                username = System.getenv("FXZ_NEXUS_USER")
+                password = System.getenv("FXZ_NEXUS_SECRET")
             }
         }
+
     }
 
 }
@@ -56,14 +57,6 @@ tasks {
             freeCompilerArgs.add("-Xcontext-receivers")
         }
     }
-
-    dokkaHtml.configure {
-        outputDirectory.set(layout.projectDirectory.dir("docs"))
-    }
-
-}
-
-tasks {
 
     compileKotlin {
         compilerOptions {

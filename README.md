@@ -21,7 +21,7 @@ We ourselves recommend that you use `Gradle Kotlin` in all your projects, but yo
 
 #### Repository
 ```kotlin
-maven("https://repo.fruxz.dev/releases/")
+maven("https://nexus.fruxz.dev/repository/public/")
 ```
 
 ##### Dependency
