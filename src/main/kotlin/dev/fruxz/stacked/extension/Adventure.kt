@@ -7,6 +7,7 @@ import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.serializer.ComponentSerializer
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
 
@@ -19,10 +20,11 @@ import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
  * @author Fruxz
  * @since 1.0
  */
-val adventureSerializer = LegacyComponentSerializer
+var adventureSerializer = LegacyComponentSerializer
 	.builder().extractUrls().hexColors().build()
 
-val plainAdventureSerializer = PlainTextComponentSerializer.plainText()
+var plainAdventureSerializer: ComponentSerializer<Component, TextComponent, String> =
+	PlainTextComponentSerializer.plainText()
 
 /**
  * This value represents the [MiniMessage] instance, which
@@ -33,9 +35,11 @@ val plainAdventureSerializer = PlainTextComponentSerializer.plainText()
  * @author Fruxz
  * @since 1.0
  */
-val miniMessageSerializer = MiniMessage.miniMessage()
+var miniMessageSerializer: ComponentSerializer<Component, Component, String> =
+	MiniMessage.miniMessage()
 
-val strictMiniMessageSerializer = MiniMessage.builder().strict(true).build()
+var strictMiniMessageSerializer: ComponentSerializer<Component, Component, String> =
+	MiniMessage.builder().strict(true).build()
 
 /**
  * This computational value converts this [ComponentLike]
