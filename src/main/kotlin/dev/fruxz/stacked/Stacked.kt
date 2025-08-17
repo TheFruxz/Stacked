@@ -1,9 +1,10 @@
 package dev.fruxz.stacked
 
+import dev.fruxz.stacked.extension.OpenMiniMessageSerializer
 import dev.fruxz.stacked.extension.api.StyledString
 import dev.fruxz.stacked.extension.asStyledComponent
+import dev.fruxz.stacked.extension.miniMessageSerializer
 import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.ComponentBuilder
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.TextComponent.Builder
@@ -158,7 +159,11 @@ fun Builder.click(process: () -> ClickEvent?) = this.clickEvent(process())
  * @since 1.0
  */
 @Stacked
-inline fun text(@StyledString content: String, builder: StackedBuilder.() -> Unit = { }) = content.asStyledComponent(builder)
+inline fun text(
+    @StyledString content: String,
+    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    builder: StackedBuilder.() -> Unit = { },
+) = content.asStyledComponent(serializer = serializer, builder = builder)
 
 /**
  * This function uses the [component] to apply it to an new [TextComponent.Builder]
@@ -170,8 +175,10 @@ inline fun text(@StyledString content: String, builder: StackedBuilder.() -> Uni
  * @since 1.0
  */
 @Stacked
-inline fun text(component: ComponentLike, builder: StackedBuilder.() -> Unit = { }) =
-	StackedBuilder(Component.text().append(component)).apply(builder).build()
+inline fun text(
+    component: ComponentLike,
+    builder: StackedBuilder.() -> Unit = { },
+) = StackedBuilder(Component.text().append(component)).apply(builder).build()
 
 /**
  * This function uses the [componentBuilder] and applies the [builder] process
@@ -183,8 +190,10 @@ inline fun text(component: ComponentLike, builder: StackedBuilder.() -> Unit = {
  * @since 1.0
  */
 @Stacked
-inline fun text(componentBuilder: Builder, builder: StackedBuilder.() -> Unit = { }) =
-	StackedBuilder(componentBuilder).apply(builder).build()
+inline fun text(
+    componentBuilder: Builder,
+    builder: StackedBuilder.() -> Unit = { },
+) = StackedBuilder(componentBuilder).apply(builder).build()
 
 /**
  * This function uses a new [Component.empty] component and applies the [builder] process

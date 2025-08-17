@@ -19,7 +19,8 @@ fun Title(
     @StyledString styledTitle: String,
     @StyledString styledSubtitle: String,
     times: AdventureTimes? = null,
-) = AdventureTitle.title(styledTitle.asStyledComponent, styledSubtitle.asStyledComponent, times)
+    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+) = AdventureTitle.title(styledTitle.asStyledComponent(serializer = serializer), styledSubtitle.asStyledComponent(serializer = serializer), times)
 
 fun Times(
     fadeIn: Duration,

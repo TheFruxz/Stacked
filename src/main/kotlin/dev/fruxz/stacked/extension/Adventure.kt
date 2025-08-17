@@ -35,10 +35,10 @@ var plainAdventureSerializer: ComponentSerializer<Component, TextComponent, Stri
  * @author Fruxz
  * @since 1.0
  */
-var miniMessageSerializer: ComponentSerializer<Component, Component, String> =
+var miniMessageSerializer: OpenMiniMessageSerializer =
 	MiniMessage.miniMessage()
 
-var strictMiniMessageSerializer: ComponentSerializer<Component, Component, String> =
+var strictMiniMessageSerializer: OpenMiniMessageSerializer =
 	MiniMessage.builder().strict(true).build()
 
 /**
@@ -103,8 +103,11 @@ val Iterable<String>.asComponents: List<TextComponent>
 val ComponentLike.asStyledString: String
 	get() = strictMiniMessageSerializer.serialize(asComponent())
 
-fun ComponentLike.asStyledString(strict: Boolean = true) =
-	strict.switch(asStyledString, miniMessageSerializer.serialize(asComponent()))
+fun ComponentLike.asStyledString(
+    serializer: OpenMiniMessageSerializer = strictMiniMessageSerializer,
+    strict: Boolean = true
+) =
+	strict.switch(asStyledString, serializer.serialize(asComponent()))
 
 /**
  * This computational value converts this [String] into a [TextComponent]
@@ -118,8 +121,12 @@ fun ComponentLike.asStyledString(strict: Boolean = true) =
 val String.asStyledComponent: TextComponent
 	get() = Component.text().append(miniMessageSerializer.deserializeOr(this, Component.empty())!!).build()
 
-inline fun String.asStyledComponent(builder: StackedBuilder.() -> Unit) =
-	StackedBuilder(Component.text().append(asStyledComponent)).apply(builder).build()
+inline fun String.asStyledComponent(
+    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    builder: StackedBuilder.() -> Unit = { },
+) = StackedBuilder(Component.text().append(serializer.deserializeOr(this, Component.empty())!!))
+    .apply(builder)
+    .build()
 
 /**
  * This computational value converts this [String] into a [TextComponent]
@@ -133,6 +140,10 @@ inline fun String.asStyledComponent(builder: StackedBuilder.() -> Unit) =
 val String.asStyledComponents: List<TextComponent>
 	get() = this.lines().asStyledComponents
 
+fun String.asStyledComponents(
+    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+): List<TextComponent> = this.lines().asStyledComponents(serializer)
+
 /**
  * This computational value converts this [Iterable] into a [TextComponent]
  * list (every entry represents a line) by using the [MiniMessage], provided by the
@@ -144,3 +155,7 @@ val String.asStyledComponents: List<TextComponent>
  */
 val Iterable<String>.asStyledComponents: List<TextComponent>
 	get() = map { it.asStyledComponent }
+
+fun Iterable<String>.asStyledComponents(
+    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+): List<TextComponent> = map { it.asStyledComponent(serializer) }
