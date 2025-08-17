@@ -1,6 +1,5 @@
 package dev.fruxz.stacked.extension
 
-import dev.fruxz.ascend.extension.switch
 import dev.fruxz.stacked.StackedBuilder
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
@@ -66,6 +65,18 @@ val ComponentLike.asPlainString: String
 val String.asComponent: TextComponent
 	get() = adventureSerializer.deserializeOr(this, Component.text("FAILED", NamedTextColor.RED))!!
 
+/**
+ * This function converts this [String] into a [TextComponent]
+ * by using the [LegacyComponentSerializer], provided by the
+ * [adventureSerializer] value.
+ * @see adventureSerializer
+ * @author Fruxz
+ * @since 2025.8
+ * @param builder the process, to modify the component
+ * @return the modified component as an [TextComponent]
+ * @see StackedBuilder
+ * @see String.asComponent
+ */
 inline fun String.asComponent(builder: StackedBuilder.() -> Unit) =
 	Component.text().append(asComponent).toStackedBuilder().apply(builder).build()
 
@@ -103,11 +114,23 @@ val Iterable<String>.asComponents: List<TextComponent>
 val ComponentLike.asStyledString: String
 	get() = strictMiniMessageSerializer.serialize(asComponent())
 
+/**
+ * This function converts this [ComponentLike] into a [String]
+ * by using the [MiniMessage], provided by the
+ * [miniMessageSerializer] value.
+ * This is especially adding the [String]-features like `<rainbow>`!
+ * @see miniMessageSerializer
+ * @author Fruxz
+ * @since 2025.8
+ * @param serializer the [OpenMiniMessageSerializer] to use for serialization
+ * @return the serialized string representation of the component
+ * @see OpenMiniMessageSerializer
+ * @see ComponentLike.asStyledString
+ * @see strictMiniMessageSerializer
+ */
 fun ComponentLike.asStyledString(
     serializer: OpenMiniMessageSerializer = strictMiniMessageSerializer,
-    strict: Boolean = true
-) =
-	strict.switch(asStyledString, serializer.serialize(asComponent()))
+) = serializer.serialize(asComponent())
 
 /**
  * This computational value converts this [String] into a [TextComponent]
@@ -121,6 +144,21 @@ fun ComponentLike.asStyledString(
 val String.asStyledComponent: TextComponent
 	get() = Component.text().append(miniMessageSerializer.deserializeOr(this, Component.empty())!!).build()
 
+/**
+ * This function converts this [String] into a [TextComponent]
+ * by using the [MiniMessage], provided by the [miniMessageSerializer] value.
+ * This is especially adding the [String]-features like `<rainbow>`!
+ * @see miniMessageSerializer
+ * @author Fruxz
+ * @since 2025.8
+ * @param serializer the [OpenMiniMessageSerializer] to use for deserialization
+ * @param builder the process, to modify the component
+ * @return the modified component as an [TextComponent]
+ * @see StackedBuilder
+ * @see String.asStyledComponent
+ * @see miniMessageSerializer
+ * @see OpenMiniMessageSerializer
+ */
 inline fun String.asStyledComponent(
     serializer: OpenMiniMessageSerializer = miniMessageSerializer,
     builder: StackedBuilder.() -> Unit = { },
@@ -140,6 +178,14 @@ inline fun String.asStyledComponent(
 val String.asStyledComponents: List<TextComponent>
 	get() = this.lines().asStyledComponents
 
+/**
+ * This function converts this [String] into a [TextComponent] list (every entry represents a line)
+ * by using the [MiniMessage], provided by the [miniMessageSerializer] value.
+ * This is especially adding the [String]-features like `<rainbow>`!
+ * @see miniMessageSerializer
+ * @author Fruxz
+ * @since 2025.8
+ */
 fun String.asStyledComponents(
     serializer: OpenMiniMessageSerializer = miniMessageSerializer,
 ): List<TextComponent> = this.lines().asStyledComponents(serializer)
@@ -156,6 +202,15 @@ fun String.asStyledComponents(
 val Iterable<String>.asStyledComponents: List<TextComponent>
 	get() = map { it.asStyledComponent }
 
+
+/**
+ * This function converts this [Iterable] of [String]s into a [List] of [TextComponent]s
+ * by using the [MiniMessage], provided by the [miniMessageSerializer] value.
+ * This is especially adding the [String]-features like `<rainbow>`!
+ * @see miniMessageSerializer
+ * @author Fruxz
+ * @since 2025.8
+ */
 fun Iterable<String>.asStyledComponents(
     serializer: OpenMiniMessageSerializer = miniMessageSerializer,
 ): List<TextComponent> = map { it.asStyledComponent(serializer) }
