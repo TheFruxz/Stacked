@@ -6,6 +6,7 @@ import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.minimessage.MiniMessage
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 import net.kyori.adventure.text.serializer.ComponentSerializer
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
@@ -161,8 +162,9 @@ val String.asStyledComponent: TextComponent
  */
 inline fun String.asStyledComponent(
     serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    tagResolver: TagResolver = TagResolver.standard(),
     builder: StackedBuilder.() -> Unit = { },
-) = StackedBuilder(Component.text().append(serializer.deserializeOr(this, Component.empty())!!))
+) = StackedBuilder(Component.text().append(serializer.deserialize(this, tagResolver)))
     .apply(builder)
     .build()
 
@@ -188,7 +190,8 @@ val String.asStyledComponents: List<TextComponent>
  */
 fun String.asStyledComponents(
     serializer: OpenMiniMessageSerializer = miniMessageSerializer,
-): List<TextComponent> = this.lines().asStyledComponents(serializer)
+    tagResolver: TagResolver = TagResolver.standard(),
+): List<TextComponent> = this.lines().asStyledComponents(serializer = serializer, tagResolver = tagResolver)
 
 /**
  * This computational value converts this [Iterable] into a [TextComponent]
@@ -213,4 +216,5 @@ val Iterable<String>.asStyledComponents: List<TextComponent>
  */
 fun Iterable<String>.asStyledComponents(
     serializer: OpenMiniMessageSerializer = miniMessageSerializer,
-): List<TextComponent> = map { it.asStyledComponent(serializer) }
+    tagResolver: TagResolver = TagResolver.standard(),
+): List<TextComponent> = map { it.asStyledComponent(serializer = serializer, tagResolver = tagResolver) }

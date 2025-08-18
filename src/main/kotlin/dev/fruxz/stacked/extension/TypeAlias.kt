@@ -1,6 +1,5 @@
 package dev.fruxz.stacked.extension
 
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.serializer.ComponentSerializer
+import net.kyori.adventure.text.minimessage.MiniMessage
 
-typealias OpenMiniMessageSerializer = ComponentSerializer<Component, Component, String>
+typealias OpenMiniMessageSerializer = MiniMessage

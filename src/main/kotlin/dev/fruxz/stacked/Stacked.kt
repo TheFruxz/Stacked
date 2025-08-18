@@ -13,6 +13,7 @@ import net.kyori.adventure.text.event.HoverEventSource
 import net.kyori.adventure.text.format.Style
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 
 /**
  * This function creates a [TextComponent] with the given base and modifier.
@@ -162,8 +163,9 @@ fun Builder.click(process: () -> ClickEvent?) = this.clickEvent(process())
 inline fun text(
     @StyledString content: String,
     serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    tagResolver: TagResolver = TagResolver.standard(),
     builder: StackedBuilder.() -> Unit = { },
-) = content.asStyledComponent(serializer = serializer, builder = builder)
+) = content.asStyledComponent(serializer = serializer, tagResolver = tagResolver, builder = builder)
 
 /**
  * This function uses the [component] to apply it to an new [TextComponent.Builder]
