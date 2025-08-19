@@ -43,3 +43,7 @@ fun <T : StyleSetter<T>> T.dyeLightPurple() = this dye NamedTextColor.LIGHT_PURP
 fun <T : StyleSetter<T>> T.dyeYellow() = this dye NamedTextColor.YELLOW
 
 fun <T : StyleSetter<T>> T.dyeWhite() = this dye NamedTextColor.WHITE
+
+fun TextColor.awt() = AwtColor(value())
+
+fun AwtColor.adventure() = TextColor.color(rgb)
