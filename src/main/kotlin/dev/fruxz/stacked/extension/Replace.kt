@@ -2,6 +2,7 @@ package dev.fruxz.stacked.extension
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
+import org.intellij.lang.annotations.RegExp
 import java.util.regex.Pattern
 
 /**
@@ -13,7 +14,7 @@ import java.util.regex.Pattern
  * @author Fruxz
  * @since 1.0
  */
-fun <T : Component> T.replace(key: String, value: String): Component =
+fun <T : Component> T.replace(@RegExp key: String, value: String): Component =
 	replaceText {
 		it.match(key)
 		it.replacement(value)
@@ -28,7 +29,7 @@ fun <T : Component> T.replace(key: String, value: String): Component =
  * @author Fruxz
  * @since 1.0
  */
-fun <T : Component> T.replace(key: String, value: ComponentLike): Component =
+fun <T : Component> T.replace(@RegExp key: String, value: ComponentLike): Component =
 	replaceText {
 		it.match(key)
 		it.replacement(value)
