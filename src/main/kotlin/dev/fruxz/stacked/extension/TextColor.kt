@@ -10,7 +10,7 @@ import java.awt.Color as AwtColor
 infix fun <T : StyleSetter<T>> T.dye(color: TextColor) = color(color)
 
 @Stacked
-infix fun <T : StyleSetter<T>> T.dye(color: AwtColor) = this dye TextColor.color(color.rgb)
+infix fun <T : StyleSetter<T>> T.dye(color: AwtColor) = this dye color.asTextColor
 
 fun <T : StyleSetter<T>> T.dyeBlack() = this dye NamedTextColor.BLACK
 
