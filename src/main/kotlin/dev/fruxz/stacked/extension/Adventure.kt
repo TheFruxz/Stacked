@@ -1,6 +1,7 @@
 package dev.fruxz.stacked.extension
 
 import dev.fruxz.stacked.StackedBuilder
+import dev.fruxz.stacked.extension.api.StyledString
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
@@ -112,6 +113,7 @@ val Iterable<String>.asComponents: List<TextComponent>
  * @author Fruxz
  * @since 1.0
  */
+@get:StyledString
 val ComponentLike.asStyledString: String
 	get() = strictMiniMessageSerializer.serialize(asComponent())
 
@@ -129,6 +131,7 @@ val ComponentLike.asStyledString: String
  * @see ComponentLike.asStyledString
  * @see strictMiniMessageSerializer
  */
+@StyledString
 fun ComponentLike.asStyledString(
     serializer: MiniMessage = strictMiniMessageSerializer,
 ) = serializer.serialize(asComponent())

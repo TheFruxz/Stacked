@@ -16,5 +16,5 @@ import net.kyori.adventure.text.minimessage.MiniMessage
  * @since 1.0
  */
 @Stacked
-@Target(AnnotationTarget.VALUE_PARAMETER)
+@Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.FUNCTION)
 annotation class StyledString
