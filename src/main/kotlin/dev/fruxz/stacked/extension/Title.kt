@@ -3,6 +3,7 @@ package dev.fruxz.stacked.extension
 import dev.fruxz.stacked.Stacked
 import dev.fruxz.stacked.extension.api.StyledString
 import net.kyori.adventure.text.ComponentLike
+import net.kyori.adventure.text.minimessage.MiniMessage
 import kotlin.time.Duration
 import kotlin.time.toJavaDuration
 import net.kyori.adventure.title.Title as AdventureTitle
@@ -19,7 +20,7 @@ fun Title(
     @StyledString styledTitle: String,
     @StyledString styledSubtitle: String,
     times: AdventureTimes? = null,
-    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    serializer: MiniMessage = miniMessageSerializer,
 ) = AdventureTitle.title(styledTitle.asStyledComponent(serializer = serializer), styledSubtitle.asStyledComponent(serializer = serializer), times)
 
 fun Times(

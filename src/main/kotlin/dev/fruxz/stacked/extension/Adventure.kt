@@ -35,10 +35,10 @@ var plainAdventureSerializer: ComponentSerializer<Component, TextComponent, Stri
  * @author Fruxz
  * @since 1.0
  */
-var miniMessageSerializer: OpenMiniMessageSerializer =
+var miniMessageSerializer: MiniMessage =
 	MiniMessage.miniMessage()
 
-var strictMiniMessageSerializer: OpenMiniMessageSerializer =
+var strictMiniMessageSerializer: MiniMessage =
 	MiniMessage.builder().strict(true).build()
 
 /**
@@ -130,7 +130,7 @@ val ComponentLike.asStyledString: String
  * @see strictMiniMessageSerializer
  */
 fun ComponentLike.asStyledString(
-    serializer: OpenMiniMessageSerializer = strictMiniMessageSerializer,
+    serializer: MiniMessage = strictMiniMessageSerializer,
 ) = serializer.serialize(asComponent())
 
 /**
@@ -161,7 +161,7 @@ val String.asStyledComponent: TextComponent
  * @see OpenMiniMessageSerializer
  */
 inline fun String.asStyledComponent(
-    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    serializer: MiniMessage = miniMessageSerializer,
     tagResolver: TagResolver = TagResolver.standard(),
     builder: StackedBuilder.() -> Unit = { },
 ) = StackedBuilder(Component.text().append(serializer.deserialize(this, tagResolver)))
@@ -189,7 +189,7 @@ val String.asStyledComponents: List<TextComponent>
  * @since 2025.8
  */
 fun String.asStyledComponents(
-    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    serializer: MiniMessage = miniMessageSerializer,
     tagResolver: TagResolver = TagResolver.standard(),
 ): List<TextComponent> = this.lines().asStyledComponents(serializer = serializer, tagResolver = tagResolver)
 
@@ -215,6 +215,6 @@ val Iterable<String>.asStyledComponents: List<TextComponent>
  * @since 2025.8
  */
 fun Iterable<String>.asStyledComponents(
-    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    serializer: MiniMessage = miniMessageSerializer,
     tagResolver: TagResolver = TagResolver.standard(),
 ): List<TextComponent> = map { it.asStyledComponent(serializer = serializer, tagResolver = tagResolver) }

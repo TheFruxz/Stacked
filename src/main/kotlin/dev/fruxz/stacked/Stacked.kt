@@ -1,6 +1,5 @@
 package dev.fruxz.stacked
 
-import dev.fruxz.stacked.extension.OpenMiniMessageSerializer
 import dev.fruxz.stacked.extension.api.StyledString
 import dev.fruxz.stacked.extension.asStyledComponent
 import dev.fruxz.stacked.extension.miniMessageSerializer
@@ -13,6 +12,7 @@ import net.kyori.adventure.text.event.HoverEventSource
 import net.kyori.adventure.text.format.Style
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor
+import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 
 /**
@@ -162,7 +162,7 @@ fun Builder.click(process: () -> ClickEvent?) = this.clickEvent(process())
 @Stacked
 inline fun text(
     @StyledString content: String,
-    serializer: OpenMiniMessageSerializer = miniMessageSerializer,
+    serializer: MiniMessage = miniMessageSerializer,
     tagResolver: TagResolver = TagResolver.standard(),
     builder: StackedBuilder.() -> Unit = { },
 ) = content.asStyledComponent(serializer = serializer, tagResolver = tagResolver, builder = builder)
