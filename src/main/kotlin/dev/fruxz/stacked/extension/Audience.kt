@@ -1,6 +1,7 @@
 package dev.fruxz.stacked.extension
 
 import net.kyori.adventure.audience.Audience
+import net.kyori.adventure.audience.ForwardingAudience
 
 /**
  * This extension takes every [Audience] and converts it into a single [Audience] instance.
@@ -8,7 +9,7 @@ import net.kyori.adventure.audience.Audience
  * @author Fruxz
  * @since 2025.5
  */
-val Iterable<Audience>.asAudience get() = Audience.audience(this)
+val Iterable<Audience>.asAudience: ForwardingAudience get() = Audience.audience(this)
 
 /**
  * This extension takes every [Audience] and converts it into a single [Audience] instance.
@@ -16,4 +17,4 @@ val Iterable<Audience>.asAudience get() = Audience.audience(this)
  * @author Fruxz
  * @since 2025.5
  */
-val Array<out Audience>.asAudience get() = Audience.audience(*this)
+val Array<out Audience>.asAudience: ForwardingAudience get() = Audience.audience(this.asIterable())
