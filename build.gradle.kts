@@ -25,10 +25,10 @@ dependencies {
 
     implementation("dev.fruxz:ascend:2025.8-64943c6")
 
-    implementation("net.kyori:adventure-api:4.17.0")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.17.0")
-    implementation("net.kyori:adventure-text-minimessage:4.17.0")
-    implementation("net.kyori:adventure-text-serializer-plain:4.17.0")
+    implementation("net.kyori:adventure-api:5.0.1")
+    implementation("net.kyori:adventure-text-serializer-legacy:5.0.1")
+    implementation("net.kyori:adventure-text-minimessage:5.0.1")
+    implementation("net.kyori:adventure-text-serializer-plain:5.0.1")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
