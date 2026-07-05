@@ -1,6 +1,5 @@
 package dev.fruxz.stacked.extension.api
 
-import dev.fruxz.stacked.Stacked
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
 
@@ -15,6 +14,5 @@ import net.kyori.adventure.text.minimessage.MiniMessage
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 @Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.FUNCTION)
 annotation class StyledString

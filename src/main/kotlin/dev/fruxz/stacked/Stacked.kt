@@ -194,7 +194,3 @@ inline fun text(
  * @since 1.0
  */
 inline fun text(builder: ComponentBuilder.() -> Unit) = text(Component.empty(), builder)
-
-@DslMarker
-@PublishedApi
-internal annotation class Stacked

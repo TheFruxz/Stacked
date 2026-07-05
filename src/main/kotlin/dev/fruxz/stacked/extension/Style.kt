@@ -1,6 +1,5 @@
 package dev.fruxz.stacked.extension
 
-import dev.fruxz.stacked.Stacked
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.format.Style
@@ -15,7 +14,6 @@ import net.kyori.adventure.text.format.TextDecoration
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 operator fun TextColor.plus(decoration: TextDecoration) =
 	Style.style(this, decoration)
 
@@ -26,7 +24,6 @@ operator fun TextColor.plus(decoration: TextDecoration) =
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 operator fun TextDecoration.plus(color: TextColor) =
 	color + this
 
@@ -37,7 +34,6 @@ operator fun TextDecoration.plus(color: TextColor) =
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 operator fun <T : StyleSetter<T>> T.plus(color: TextColor): T =
 	this.color(color)
 
@@ -48,7 +44,6 @@ operator fun <T : StyleSetter<T>> T.plus(color: TextColor): T =
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 operator fun <T : StyleSetter<T>> T.plus(decoration: TextDecoration) =
 	this.decorate(decoration)
 
@@ -59,7 +54,6 @@ operator fun <T : StyleSetter<T>> T.plus(decoration: TextDecoration) =
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 operator fun TextComponent.plus(style: Style) =
 	this.style(style)
 
@@ -70,7 +64,6 @@ operator fun TextComponent.plus(style: Style) =
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 infix fun TextComponent.style(style: Style) =
 	this + style
 
@@ -81,32 +74,25 @@ infix fun TextComponent.style(style: Style) =
  * @author Fruxz
  * @since 1.0
  */
-@Stacked
 infix fun TextComponent.style(color: TextColor): Component =
 	(this + color)
 
-@Stacked
 fun Component.style(color: TextColor, vararg decorations: TextDecoration) =
 	style(Style.style(color, *decorations))
 
-@Stacked
 fun Component.style(vararg decorations: TextDecoration) =
 	style(Style.style(*decorations))
 
-@Stacked
 fun TextComponent.Builder.style(color: TextColor, vararg decorations: TextDecoration) =
 	style(Style.style(color, *decorations))
 
-@Stacked
 fun TextComponent.Builder.style(vararg decorations: TextDecoration) =
 	style(Style.style(*decorations))
 
-@Stacked
 fun <T : StyleSetter<T>> T.style(decoration: TextDecoration, flag: Boolean) = apply {
 	decoration(decoration, flag)
 }
 
-@Stacked
 fun <T : StyleSetter<T>> T.style(vararg decorations: Pair<TextDecoration, Boolean>) = apply {
 	decorations.forEach { (decoration, flag) -> decoration(decoration, flag) }
 }
@@ -118,7 +104,6 @@ fun <T : StyleSetter<T>> T.style(vararg decorations: Pair<TextDecoration, Boolea
  * @author Fruxz
  * @since 2025.1
  */
-@Stacked
 fun <T : StyleSetter<T>> T.bold(flag: Boolean = true) =
 	style(TextDecoration.BOLD, flag)
 
@@ -127,7 +112,6 @@ fun <T : StyleSetter<T>> T.bold(flag: Boolean = true) =
  * @author Fruxz
  * @since 2025.1
  */
-@Stacked
 fun <T : StyleSetter<T>> T.italic(flag: Boolean = true) =
 	style(TextDecoration.ITALIC, flag)
 
@@ -136,7 +120,6 @@ fun <T : StyleSetter<T>> T.italic(flag: Boolean = true) =
  * @author Fruxz
  * @since 2025.1
  */
-@Stacked
 fun <T : StyleSetter<T>> T.underlined(flag: Boolean = true) =
 	style(TextDecoration.UNDERLINED, flag)
 
@@ -145,7 +128,6 @@ fun <T : StyleSetter<T>> T.underlined(flag: Boolean = true) =
  * @author Fruxz
  * @since 2025.1
  */
-@Stacked
 fun <T : StyleSetter<T>> T.strikethrough(flag: Boolean = true) =
 	style(TextDecoration.STRIKETHROUGH, flag)
 
@@ -154,6 +136,5 @@ fun <T : StyleSetter<T>> T.strikethrough(flag: Boolean = true) =
  * @author Fruxz
  * @since 2025.1
  */
-@Stacked
 fun <T : StyleSetter<T>> T.obfuscated(flag: Boolean = true) =
 	style(TextDecoration.OBFUSCATED, flag)

@@ -1,15 +1,12 @@
 package dev.fruxz.stacked.extension
 
-import dev.fruxz.stacked.Stacked
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.StyleSetter
 import net.kyori.adventure.text.format.TextColor
 import java.awt.Color as AwtColor
 
-@Stacked
 infix fun <T : StyleSetter<T>> T.dye(color: TextColor) = color(color)
 
-@Stacked
 infix fun <T : StyleSetter<T>> T.dye(color: AwtColor) = this dye color.asTextColor
 
 fun <T : StyleSetter<T>> T.dyeBlack() = this dye NamedTextColor.BLACK

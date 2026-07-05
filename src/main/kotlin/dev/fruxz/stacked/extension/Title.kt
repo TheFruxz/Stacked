@@ -1,6 +1,5 @@
 package dev.fruxz.stacked.extension
 
-import dev.fruxz.stacked.Stacked
 import dev.fruxz.stacked.extension.api.StyledString
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.minimessage.MiniMessage
@@ -15,7 +14,6 @@ fun Title(
     times: AdventureTimes? = null,
 ) = AdventureTitle.title(title.asComponent(), subtitle.asComponent(), times)
 
-@Stacked
 fun Title(
     @StyledString styledTitle: String,
     @StyledString styledSubtitle: String,
