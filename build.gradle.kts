@@ -35,6 +35,12 @@ dependencies {
 
 publishing {
 
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+
     repositories {
         mavenLocal()
         maven("https://nexus.fruxz.dev/repository/releases/") {
