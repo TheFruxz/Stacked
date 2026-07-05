@@ -1,8 +1,8 @@
 import java.util.*
 
 plugins {
-    kotlin("jvm") version "2.1.20"
-    kotlin("plugin.serialization") version "2.1.10"
+    kotlin("jvm") version "2.4.0"
+    kotlin("plugin.serialization") version "2.4.0"
     id("org.jetbrains.dokka") version "2.2.0"
     id("org.hildan.kotlin-publish") version "1.7.0"
     `maven-publish`
@@ -23,14 +23,14 @@ dependencies {
 
     testImplementation(kotlin("test"))
 
-    implementation("dev.fruxz:ascend:2025.8-64943c6")
+    implementation("dev.fruxz:ascend:2026.6-e59e51c")
 
-    implementation("net.kyori:adventure-api:4.17.0")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.17.0")
-    implementation("net.kyori:adventure-text-minimessage:4.17.0")
-    implementation("net.kyori:adventure-text-serializer-plain:4.17.0")
+    implementation("net.kyori:adventure-api:5.2.0")
+    implementation("net.kyori:adventure-text-serializer-legacy:5.2.0")
+    implementation("net.kyori:adventure-text-minimessage:5.2.0")
+    implementation("net.kyori:adventure-text-serializer-plain:5.2.0")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 
 }
 
@@ -51,12 +51,6 @@ publishing {
 }
 
 tasks {
-
-    kotlin {
-        compilerOptions {
-            freeCompilerArgs.add("-Xcontext-receivers")
-        }
-    }
 
     compileKotlin {
         compilerOptions {
