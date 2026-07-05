@@ -1,6 +1,5 @@
 package dev.fruxz.stacked.extension
 
-import dev.fruxz.stacked.StackedBuilder
 import dev.fruxz.stacked.extension.api.StyledString
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
@@ -11,6 +10,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 import net.kyori.adventure.text.serializer.ComponentSerializer
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
+import net.kyori.adventure.text.TextComponent.Builder as ComponentBuilder
 
 /**
  * This value represents the [LegacyComponentSerializer] instance, which
@@ -79,8 +79,8 @@ val String.asComponent: TextComponent
  * @see StackedBuilder
  * @see String.asComponent
  */
-inline fun String.asComponent(builder: StackedBuilder.() -> Unit) =
-	Component.text().append(asComponent).toStackedBuilder().apply(builder).build()
+inline fun String.asComponent(builder: ComponentBuilder.() -> Unit) =
+	Component.text().append(asComponent).apply(builder).build()
 
 /**
  * This computational value converts this [String] into a [TextComponent]
@@ -166,8 +166,8 @@ val String.asStyledComponent: TextComponent
 inline fun String.asStyledComponent(
     serializer: MiniMessage = miniMessageSerializer,
     tagResolver: TagResolver = TagResolver.standard(),
-    builder: StackedBuilder.() -> Unit = { },
-) = StackedBuilder(Component.text().append(serializer.deserialize(this, tagResolver)))
+    builder: ComponentBuilder.() -> Unit = { },
+) = Component.text().append(serializer.deserialize(this, tagResolver))
     .apply(builder)
     .build()
 

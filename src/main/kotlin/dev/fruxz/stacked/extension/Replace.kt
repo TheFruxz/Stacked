@@ -2,8 +2,12 @@ package dev.fruxz.stacked.extension
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
+import net.kyori.adventure.text.TextReplacementConfig
 import org.intellij.lang.annotations.RegExp
 import java.util.regex.Pattern
+
+private fun Component.performReplace(builder: TextReplacementConfig.Builder.() -> Unit) =
+	this.replaceText(TextReplacementConfig.builder().apply(builder).build())
 
 /**
  * Replaces all occurrences of the given [key] with the given [value]
@@ -15,9 +19,9 @@ import java.util.regex.Pattern
  * @since 1.0
  */
 fun <T : Component> T.replace(@RegExp key: String, value: String): Component =
-	replaceText {
-		it.match(key)
-		it.replacement(value)
+	performReplace {
+		match(key)
+		replacement(value)
 	}
 
 /**
@@ -30,9 +34,9 @@ fun <T : Component> T.replace(@RegExp key: String, value: String): Component =
  * @since 1.0
  */
 fun <T : Component> T.replace(@RegExp key: String, value: ComponentLike): Component =
-	replaceText {
-		it.match(key)
-		it.replacement(value)
+	performReplace {
+		match(key)
+		replacement(value)
 	}
 
 /**
@@ -45,9 +49,9 @@ fun <T : Component> T.replace(@RegExp key: String, value: ComponentLike): Compon
  * @since 1.0
  */
 fun <T : Component> T.replace(regex: Regex, value: String): Component =
-	replaceText {
-		it.match(Pattern.compile(regex.pattern))
-		it.replacement(value)
+	performReplace {
+		match(Pattern.compile(regex.pattern))
+		replacement(value)
 	}
 
 /**
@@ -59,9 +63,9 @@ fun <T : Component> T.replace(regex: Regex, value: String): Component =
  * @author Fruxz
  */
 fun <T : Component> T.replace(regex: Regex, value: ComponentLike): Component =
-	replaceText {
-		it.match(Pattern.compile(regex.pattern))
-		it.replacement(value)
+	performReplace {
+		match(Pattern.compile(regex.pattern))
+		replacement(value)
 	}
 
 /**
@@ -74,9 +78,9 @@ fun <T : Component> T.replace(regex: Regex, value: ComponentLike): Component =
  * @since 1.0
  */
 fun <T : Component> T.replace(pattern: Pattern, value: String): Component =
-	replaceText {
-		it.match(pattern)
-		it.replacement(value)
+	performReplace {
+		match(pattern)
+		replacement(value)
 	}
 
 /**
@@ -89,7 +93,7 @@ fun <T : Component> T.replace(pattern: Pattern, value: String): Component =
  * @since 1.0
  */
 fun <T : Component> T.replace(pattern: Pattern, value: ComponentLike): Component =
-	replaceText {
-		it.match(pattern)
-		it.replacement(value)
+	performReplace {
+		match(pattern)
+		replacement(value)
 	}
