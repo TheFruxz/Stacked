@@ -1,5 +1,6 @@
-package dev.fruxz.stacked.extension
+package dev.fruxz.stacked
 
+import dev.fruxz.stacked.extension.asStyledComponent
 import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.TextComponent
 import net.kyori.adventure.text.event.ClickEvent
@@ -8,7 +9,7 @@ import net.kyori.adventure.text.TextComponent.Builder as ComponentBuilder
 /**
  * This operator function appends the given [String] to the
  * current Builder instance by converting it to a [TextComponent]
- * using the [String.asStyledComponent] value first.
+ * using the [asStyledComponent] value first.
  * @author Fruxz
  * @since 2025.1
  */
