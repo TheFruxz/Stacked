@@ -44,7 +44,7 @@ operator fun Iterable<ComponentLike>.unaryPlus() =
  * @since 2025.1
  */
 context(builder: ComponentBuilder)
-operator fun ClickEvent<*>.unaryPlus() =
+operator fun ClickEvent.unaryPlus() =
     builder.clickEvent(this)
 
 /**

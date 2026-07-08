@@ -10,7 +10,7 @@ plugins {
 val publishVersion = System.getenv("GH_RELEASE_VERSION")
 val calendar = Calendar.getInstance()
 
-version = publishVersion ?: "${calendar[Calendar.YEAR]}.${calendar[Calendar.MONTH] + 1}-dev"
+version = "$publishVersion-legacy" ?: "${calendar[Calendar.YEAR]}.${calendar[Calendar.MONTH] + 1}-dev"
 group = "dev.fruxz"
 
 repositories {
@@ -24,10 +24,10 @@ dependencies {
 
     implementation("dev.fruxz:ascend:2026.6-e59e51c")
 
-    implementation("net.kyori:adventure-api:5.2.0")
-    implementation("net.kyori:adventure-text-serializer-legacy:5.2.0")
-    implementation("net.kyori:adventure-text-minimessage:5.2.0")
-    implementation("net.kyori:adventure-text-serializer-plain:5.2.0")
+    implementation("net.kyori:adventure-api:4.26.1")
+    implementation("net.kyori:adventure-text-serializer-legacy:4.26.1")
+    implementation("net.kyori:adventure-text-minimessage:4.26.1")
+    implementation("net.kyori:adventure-text-serializer-plain:4.17.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 

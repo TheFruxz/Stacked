@@ -97,7 +97,7 @@ infix operator fun <I : Component> I.plus(component: Component): Component =
  * @author Fruxz
  * @since 1.0
  */
-infix operator fun ComponentBuilder.plus(clickEvent: ClickEvent<*>?): ComponentBuilder =
+infix operator fun ComponentBuilder.plus(clickEvent: ClickEvent?): ComponentBuilder =
 	clickEvent(clickEvent)
 
 /**
@@ -134,9 +134,9 @@ infix operator fun ComponentBuilder.plus(style: Style): ComponentBuilder =
  */
 inline fun <T : StyleSetter<T>> T.hover(process: () -> HoverEventSource<*>?) = this.hoverEvent(process())
 
-fun Component.click(process: () -> ClickEvent<*>?) = this.clickEvent(process())
+fun Component.click(process: () -> ClickEvent?) = this.clickEvent(process())
 
-fun ComponentBuilder.click(process: () -> ClickEvent<*>?) = this.clickEvent(process())
+fun ComponentBuilder.click(process: () -> ClickEvent?) = this.clickEvent(process())
 
 /**
  * This function converts the [content] to an [TextComponent] using the [String.asStyledComponent].
