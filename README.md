@@ -28,6 +28,16 @@ maven("https://nexus.fruxz.dev/repository/public/")
 ```kotlin
 implementation("dev.fruxz:stacked:$stackedVersion")
 ```
+
+##### Compiler Options
+```kotlin
+kotlin {
+    //...
+    compilerOptions {
+        freeCompilerArgs.add("-Xcontext-parameters")
+    }
+}
+```
 ## 👥 Contribution
 
 Of course, you can also participate in Stacked and contribute to the development. However, please follow all community and general guidelines of GitHub and the repositories. You also have to respect the licenses set in this repository as well as in other repositories.
